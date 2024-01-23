@@ -1,3 +1,5 @@
+/* -------------------- Global -------------------- */
+
 /* Color palette from: https://colorhunt.co/palette/527853f9e8d9f7b787ee7214 */
 /*:root {
   --primary: #527853;
@@ -14,10 +16,6 @@
   --accent: #faf8ed;
 }
 
-html, body {
-  height: 100%;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -25,38 +23,45 @@ html, body {
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100vh;
+}  
+
+h2 {
+  padding: 10px;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
 main {
   background-color: var(--secondary);
-  height: 80vh;
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: 80% 20%;
+  grid-template-rows: 66% 34%;
   background-color: #f0f0f1;
 }
 
-header {
-  display: grid;
-  grid-template-columns: 35% 30% 35%;
+/* -------------------- Tags -------------------- */
+.tag {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background-color: var(--tertiary);
+  border-radius: 3px;
+  padding: 2px 3px 2px 3px;
+}
+
+.semester p {
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.semester p:hover {
   background-color: var(--primary);
-  padding: 20px;
-}
-.logo {
-  text-align: center;
 }
 
-.headerP {
-  display: inline-block;
-}
-
-.personal {
-  display: grid;
-  grid-template-columns: 40% auto;
-}
-.controls {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
+/* -------------------- Buttons -------------------- */
 .btn {
   background-color: var(--primary);
   border: none;
@@ -73,31 +78,47 @@ header {
   color: #f0f0f1;
 }
 
-.plan {
+/* -------------------- Header -------------------- */
+header {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  overflow-y: auto;
-  grid-template-rows: auto;
-  background-color: #f0f0f1;
-  padding: 5%;
-  text-align: left;
-  color: black;
+  grid-template-columns: 35% 30% 35%;
+  background-color: var(--primary);
+  padding: 20px;
 }
 
-.plan h2 {
-  grid-column: 1 / -1;
+.logo {
   text-align: center;
 }
 
-.requirements {
-  background-color: #f0f0f1;
-  padding: 5%;
-  text-align: left;
-  color: black;
+.headerP {
+  display: inline-block;
 }
 
-.requirements h2 {
+.personal {
+  display: grid;
+  grid-template-columns: 40% auto;
+  align-content: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.options {
+  display: none;
+}
+
+/* -------------------- Main -------------------- */
+.main {
+  padding: 5px;
+}
+
+/* -------------------- Requirements -------------------- */
+#requirements {
+  background-color: #f0f0f1;
   text-align: left;
+  color: black;
 }
 
 .req {
@@ -105,89 +126,39 @@ header {
   background-color: var(--tertiary);
   cursor: pointer;
   margin: 5px;
-  border-radius: 2px;
+  border-radius: 0.3em;
   padding: 5px;
+  padding-left: 10px;
+}
+
+/* -------------------- Plan -------------------- */
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow-y: auto;
+  grid-template-rows: auto;
+  padding: 5px;
+  padding-top: 0px; /* so it aligns with requirements */
+  text-align: left;
+  color: black;
 }
 
 .semester {
   border: var(--secondary) solid 1px;
+  border-radius: 0.3em;
+  background-color: white;
   padding: 5px;
-}
-
-.tag {
-  color: var(--accent);
-  background-color: var(--tertiary);
-  border-radius: 1px;
-  padding: 1px 3px 1px 3px;
-}
-
-.tag1 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-#homepages > h2{
-  text-align: left;
-  padding: 10px;
   margin: 5px;
 }
 
-.btn2 {
-  align-items: center;
-  background-color: var(--tertiary);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: block;
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
-  justify-content: center;
-  line-height: 1.25;
-  margin: 4px;
-  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: auto;
+.semester p, .semester h3 {
+  margin-left: 5px;
 }
 
-.btn2:hover,
-.btn2:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.btn2:hover {
-  transform: translateY(-1px);
-}
-
-.btn2:active {
-  background-color: #f0f0f1;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
-}
-
-.bottomRight {
-  background-color: #f0f0f1;
-}
-
-.bottomRight > p {
+/* -------------------- Course Finder -------------------- */
+#course-finder > p {
   color: red;
-  display: inline-block;
-}
-
-.bottomRight > h2 {
-  text-align: center;
+  margin-left: 10px;;
 }
 
 .searchBar {
