@@ -23,19 +23,21 @@
       </div>
       <h1 class="logo">ACADEMIC PLANNING</h1>
       <div class="controls">
-        <button class="btn">Options</button>
-        <!-- These are hidden until we get the dropdown working -->
-        <!-- TODO: get the dropdown working -->
-        <div class="options">
-          <a>New Plan</a>
-          <a>Manage Plans</a>
-          <a>Print</a>
-          <a>Show Grades</a>
-          <a>Waivers</a>
-          <a>About</a>
-          <a>Help</a>
-          <a>Report Bug</a>
-        </div>
+        <select
+          name="options"
+          id="options"
+          class="btn"
+        >
+          <option hidden>Options</option>
+          <option value="">Create Plan</option>
+          <option value="">Manage Plans</option>
+          <option value="">Print</option>
+          <option value="">Show Grades</option>
+          <option value="">Waivers</option>
+          <option value="">About</option>
+          <option value="">Help</option>
+          <option value="">Report Bug</option>
+        </select>
         <button class="btn">Log out</button>
         <button class="btn">Save</button>
       </div>
