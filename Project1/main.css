@@ -102,9 +102,12 @@ p {
   font-size: 0.9rem;
 }
 
-.main {
+.main1 {
   padding: 5px;
+  border-color: red;
 }
+
+
 
 /* -------------------- Requirements -------------------- */
 #requirements {
@@ -114,7 +117,7 @@ p {
 }
 
 .req {
-  color: var(--primary);
+  color: var(--accent);
   background-color: var(--tertiary);
   border-radius: 0.3em;
   padding: 5px;
@@ -129,11 +132,11 @@ p {
 }
 
 .plan-grid {
+  max-height: 90%;
+  overflow: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  overflow: scroll;
-  overflow-y: scroll;
   color: black;
   text-align: left;
   padding: 5px;
@@ -153,7 +156,12 @@ p {
 }
 
 /* -------------------- Course Finder -------------------- */
-#course-finder > p {
+/* #course-finder > p {
+  color: red;
+  margin-left: 10px;;
+} */
+
+.course-finder > p {
   color: red;
   margin-left: 10px;;
 }
