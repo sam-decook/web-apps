@@ -4,36 +4,79 @@
 }
 
 @font-face {
-    font-family: "Noto Serif";
+    font-family: "Noto Serif Header";
     src: url("fonts/Noto_Serif/NotoSerif-VariableFont_wdth\,wght.ttf");
     font-optical-sizing: auto;
-    font-weight: 100;
+    font-weight: 150;
     font-style: normal;
     font-variation-settings: "wdth" 100;
 }
 
-h1 {
-    font-family: tangerine;
-    text-align: center;
+@font-face {
+    font-family: "Noto Serif";
+    src: url("fonts/Noto_Serif/NotoSerif-VariableFont_wdth\,wght.ttf");
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings: "wdth" 150;
 }
 
-h2, p {
-    font-family: "Noto Serif";
+:root {
+  --bg: #30475E;
+  --writing: #f0c863;
+}
+
+h1 {
+    margin-top: 4rem;
+    margin-bottom: 0px;
+    font-family: tangerine;
     text-align: center;
+    color: var(--writing)
+}
+
+h2 {
+    font-family: "Noto Serif Header";
+    font-size: 2rem;
+    text-align: center;
+    color: var(--writing);
+    margin-top: 0px;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+    /* text-decoration: none; */
+    color: var(--writing);
+    font-family: "Noto Serif";
 }
 
 body {
     display: flex;
+    flex-shrink: 0;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.recipes {
+section {
+    background-color: var(--bg);
+    width: 45%;
+    height: 95vh;
     display: flex;
-    justify-content: space-between;
+}
+
+.page {
+    flex-grow: 1;
+    background-color: var(--bg);
+    width: 40%;
+    border: var(--writing) solid 2px;
+    margin: 3%;
+}
+
+.recipes {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.recipe {
+    margin: 10px;
 }
