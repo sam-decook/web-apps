@@ -9,65 +9,14 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
   font-family: "Fira Sans", sans-serif;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html, body {
-  height: 100vh;
-}  
-
-h2 {
-  padding: 10px;
-}
-
-p {
-  font-size: 0.9rem;
-}
-
-main {
-  background-color: var(--secondary);
-  display: grid;
-  grid-template-columns: 20% 80%;
-  grid-template-rows: 66% 34%;
-  background-color: #f0f0f1;
-}
-
-/* -------------------- Tags -------------------- */
-.tag {
-  font-size: 0.8rem;
-  color: var(--accent);
-  background-color: var(--tertiary);
-  border-radius: 3px;
-  padding: 2px 3px 2px 3px;
-}
-
-.semester p {
-  padding: 4px;
-  border-radius: 3px;
-}
-
-.semester p:hover {
-  background-color: var(--primary);
-}
-
-/* -------------------- Buttons -------------------- */
-.btn {
-  background-color: var(--primary);
-  border: none;
-  color: rgb(0, 0, 0);
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-.btn:hover {
-  background-color: var(--secondary);
-  color: #f0f0f1;
+body {
+  height:100vh;
 }
 
 /* -------------------- Header -------------------- */
@@ -101,7 +50,58 @@ header {
   display: none;
 }
 
+/* -------------------- Tags -------------------- */
+.tag {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background-color: var(--tertiary);
+  border-radius: 3px;
+  padding: 2px 3px 2px 3px;
+}
+
+.semester p {
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.semester p:hover {
+  background-color: var(--primary);
+}
+
+/* -------------------- Buttons -------------------- */
+.btn {
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  background-color: var(--primary);
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  color: var(--accent);
+  background-color: var(--secondary);
+}
+
 /* -------------------- Main -------------------- */
+main {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 66% 34%;
+  background-color: #f0f0f1;
+}
+
+h2 {
+  padding: 10px;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
 .main {
   padding: 5px;
 }
@@ -116,23 +116,28 @@ header {
 .req {
   color: var(--primary);
   background-color: var(--tertiary);
-  cursor: pointer;
-  margin: 5px;
   border-radius: 0.3em;
   padding: 5px;
   padding-left: 10px;
+  margin: 5px;
+  cursor: pointer;
 }
 
 /* -------------------- Plan -------------------- */
+.plan {
+  overflow-y: scroll;
+}
+
 .plan-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  overflow-y: auto;
   grid-template-rows: auto;
+  overflow: scroll;
+  overflow-y: scroll;
+  color: black;
+  text-align: left;
   padding: 5px;
   padding-top: 0px; /* so it aligns with requirements */
-  text-align: left;
-  color: black;
 }
 
 .semester {
