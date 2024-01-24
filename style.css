@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "Tangerine";
+    src: url("fonts/Tangerine/Tangerine-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Noto Serif";
+    src: url("fonts/Noto_Serif/NotoSerif-VariableFont_wdth\,wght.ttf");
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+h1 {
+    font-family: tangerine;
+    text-align: center;
+}
+
+h2, p {
+    font-family: "Noto Serif";
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recipes {
+    display: flex;
+    justify-content: space-between;
+}
