@@ -129,6 +129,22 @@ p {
 /* -------------------- Plan -------------------- */
 .plan {
   overflow-y: scroll;
+  margin-right: 10px;
+}
+
+.plan-info {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+.plan-info div {
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.plan-info span {
+  margin-left: 10px;
 }
 
 .plan-grid {
@@ -167,6 +183,6 @@ p {
 }
 
 .searchBar {
-  display: inline-flex;
-  margin-left: 50%;
+  /*display: inline-flex;*/
+  margin-left: 10px;
 }
