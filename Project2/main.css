@@ -193,6 +193,9 @@ input{
 input:invalid {
   color: firebrick;
 }
+#validationForm {
+  margin-left: 10px;
+}
 
 input:valid {
   color: black;

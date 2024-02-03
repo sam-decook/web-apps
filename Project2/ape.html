@@ -18,10 +18,10 @@
     <!-- Start of the header across the top -->
     <header>
       <div class="personal">
-        <p class="headerP"><strong>Student:</strong> Joe Doe</p>
-        <p class="headerP"><strong>Major:</strong> AI Prompt Engineer</p>
-        <p class="headerP"><strong>Catalog:</strong> 2133</p>
-        <p class="headerP"><strong>Minor:</strong> Women's Studies</p>
+        <p class="headerP" id="nameHeader"><strong>Student:</strong> Joe Doe</p>
+        <p class="headerP" id="majorHeader"><strong>Major:</strong> AI Prompt Engineer</p>
+        <p class="headerP"><strong>Catalog:</strong> 2019</p>
+        <p class="headerP" id="minorHeader"><strong>Minor: </strong> Women's Studies</p>
       </div>
       <h1 class="logo">ACADEMIC PLANNING</h1>
       <div class="controls">
@@ -84,106 +84,7 @@
           </div>
         </div>
         
-        <div class="plan-grid">
-          <!--
-            <div id="fa1" class="semester">
-              <h3>Fall 2020</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="sp1" class="semester">
-              <h3>Spring 2021</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="su1" class="semester">
-              <h3>Summer 2021</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="fa2" class="semester">
-              <h3>Fall 2021</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="sp2" class="semester">
-              <h3>Spring 2022</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="su2" class="semester">
-              <h3>Summer 2022</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="fa3" class="semester">
-              <h3>Fall 2022</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="sp3" class="semester">
-              <h3>Spring 2023</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="su3" class="semester">
-              <h3>Summer 2023</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="fa4" class="semester">
-              <h3>Fall 2023</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="sp4" class="semester">
-              <h3>Spring 2024</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-            <div id="su4" class="semester">
-              <h3>Summer 2024</h3>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-              <p><span class="tag">EGCP-3223</span> Class 1</p>
-            </div>
-          -->
-        </div>
+        <div class="plan-grid"></div>
       </div>
 
       <!-- The section containing the links to our respective homepages -->
@@ -198,18 +99,20 @@
       <div class="course-finder" id="course-finder">
         <h2>Course Finder</h2>
 
-        <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="post">
-
-          <label for="email">Email: </label>
-          <input type="email" id="email" name="email" onchange="brugelsIsSexy()" required>
-          <span id="emailError" style="color: red; display: none;">Invalid email format, you moron!</span>
+        <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="post" target="_blank">
           <label for="name">Name: </label>
-          <input type="text" id="name" name="name" required>
+          <input type="text" id="name" name="name" onchange="nameChanged()" required>
+          <label for="major">Major: </label>
+          <input type="text" id="major" name="major" onchange="majorChanged()" required>
+          <label for="minor">Minor: </label>
+          <input type="text" id="minor" name="minor" onchange="minorChanged()" required>
           <input type="submit" value="Submit">
-
+          <span id="nameError" style="color: red; display: none;">Invalid name format!</span>
+          <span id="majorError" style="color: red; display: none;">Invalid major format!</span>
+          <span id="minorError" style="color: red; display: none;">Invalid minor format!</span>
         </form>
 
-        <form id = "courseSearchForm" action="http://judah.cedarville.edu/echo.php" method = "POST" onchange="javascriptFunctionHereForOnChange()" onsubmit="javascriptFunctionHereForOnSubmit()">
+       <!-- <form id = "courseSearchForm" action="http://judah.cedarville.edu/echo.php" method = "POST" onchange="javascriptFunctionHereForOnChange()" onsubmit="javascriptFunctionHereForOnSubmit()">
           <label for=""></label>  
           <input type="text" id="courseSearch" name="courseSearch" placeholder="Search" pattern="([A-Z]{2,4}-\d{4})?(\w|\s)*" title="Must be a course designator or name">
           <datalist id="courseSearch">
@@ -228,6 +131,7 @@
           </datalist>
           <input type = "submit" id="submitBtn">
         </form>
+      -->
       </div>
     </main>
   </body>
