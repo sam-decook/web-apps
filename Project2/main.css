@@ -1,0 +1,199 @@
+/* -------------------- Global -------------------- */
+
+/* Color palette from: https://colorhunt.co/palette/f9b57299b080748e63faf8ed */
+:root {
+  --primary: #f9b572;
+  --secondary: #99b080;
+  --tertiary: #748e63;
+  --accent: #faf8ed;
+}
+
+* {
+  font-family: "Fira Sans", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height:100vh;
+}
+
+/* -------------------- Header -------------------- */
+header {
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  background-color: var(--primary);
+  padding: 20px;
+}
+
+.logo {
+  text-align: center;
+}
+
+.headerP {
+  display: inline-block;
+}
+
+.personal {
+  display: grid;
+  grid-template-columns: 40% auto;
+  align-content: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.options {
+  display: none;
+}
+
+/* -------------------- Tags -------------------- */
+.tag {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background-color: var(--tertiary);
+  border-radius: 3px;
+  padding: 2px 3px 2px 3px;
+}
+
+.semester p {
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.semester p:hover {
+  background-color: var(--primary);
+}
+
+/* -------------------- Buttons -------------------- */
+.btn {
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  background-color: var(--primary);
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  color: var(--accent);
+  background-color: var(--secondary);
+}
+
+/* -------------------- Main -------------------- */
+main {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 66% 34%;
+  background-color: #f0f0f1;
+}
+
+h2 {
+  padding: 10px;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+.main1 {
+  padding: 5px;
+}
+
+
+
+/* -------------------- Requirements -------------------- */
+#requirements {
+  background-color: #f0f0f1;
+  text-align: left;
+  color: black;
+}
+
+.req {
+  color: var(--accent);
+  background-color: var(--tertiary);
+  border-radius: 0.3em;
+  padding: 5px;
+  padding-left: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* -------------------- Plan -------------------- */
+.plan {
+  overflow-y: scroll;
+  margin-right: 10px;
+}
+
+.plan-info {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+.plan-info div {
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.plan-info span {
+  margin-left: 10px;
+}
+
+.plan-grid {
+  max-height: 90%;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  color: black;
+  text-align: left;
+  padding: 5px;
+  padding-top: 0px; /* so it aligns with requirements */
+}
+
+.semester {
+  border: var(--secondary) solid 1px;
+  border-radius: 0.3em;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.semester p, .semester h3 {
+  margin-left: 5px;
+}
+
+/* -------------------- Course Finder -------------------- */
+.course-finder h2, 
+.course-finder p, 
+.course-finder input {
+  display: inline;
+}
+
+.course-finder > p {
+  color: var(--tertiary);
+  margin-left: 10px;;
+}
+
+.searchBar {
+  /*display: inline-flex;*/
+  margin-left: 10px;
+}
+input{
+  margin-left: 10px;
+}
+
+input:invalid {
+  color: firebrick;
+}
+
+input:valid {
+  color: black;
+}
