@@ -7,13 +7,13 @@ function validateForm() {
 
     document.getElementById(
       "nameHeader"
-    ).innerHTML = `<strong>Student: </strong>${nameInput.value}`;
+    ).innerHTML = `<b class="tag">Student</b> ${nameInput.value}`;
     document.getElementById(
       "majorHeader"
-    ).innerHTML = `<strong>Major: </strong>${majorInput.value}`;
+    ).innerHTML = `<b class="tag">Major</b> ${majorInput.value}`;
     document.getElementById(
       "minorHeader"
-    ).innerHTML = `<strong>Minor: </strong>${minorInput.value}`;
+    ).innerHTML = `<b class="tag">Minor</b> ${minorInput.value}`;
 
     return true;
   };
@@ -32,7 +32,7 @@ function nameChanged() {
     nameError.style.display = "none";
     document.getElementById(
       "nameHeader"
-    ).innerHTML = `<strong>Student: </strong>${nameInput.value}`;
+    ).innerHTML = `<b class="tag">Student</b> ${nameInput.value}`;
   }
 }
 
@@ -48,7 +48,7 @@ function majorChanged() {
     majorError.style.display = "none";
     document.getElementById(
       "majorHeader"
-    ).innerHTML = `<strong>Major: </strong>${majorInput.value}`;
+    ).innerHTML = `<b class="tag">Major</b> ${majorInput.value}`;
   }
 }
 
@@ -64,7 +64,7 @@ function minorChanged() {
     minorError.style.display = "none";
     document.getElementById(
       "minorHeader"
-    ).innerHTML = `<strong>Minor: </strong>${minorInput.value}`;
+    ).innerHTML = `<b class="tag">Minor</b> ${minorInput.value}`;
   }
 }
 

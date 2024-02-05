@@ -89,11 +89,14 @@ main {
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 66% 34%;
-  background-color: #f0f0f1;
+  margin: 4px;
 }
 
-h2 {
-  padding: 10px;
+main > div {
+  background-color: #f0f0f1;
+  margin: 4px;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
 }
 
 p {
@@ -107,25 +110,23 @@ p {
   border-radius: 0.3em;
   padding: 5px;
   padding-left: 10px;
-  margin: 5px;
-  cursor: pointer;
+  margin: 5px 0px;
 }
 
 /* -------------------- Plan -------------------- */
-.plan {
-  overflow-y: scroll;
-  margin-right: 10px;
-}
-
 .plan-info {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
+  align-content: center;
+}
+
+.plan-info h2 {
+  margin-left: 5px;
 }
 
 .plan-info p {
   margin-right: 10px;
-  margin-top: 15px;
 }
 
 .plan-info span {
@@ -133,15 +134,11 @@ p {
 }
 
 .plan-grid {
-  max-height: 90%;
   overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   color: black;
-  text-align: left;
-  padding: 5px;
-  padding-top: 0px; /* so it aligns with requirements */
 }
 
 .semester {
@@ -152,8 +149,8 @@ p {
   margin: 5px;
 }
 
-.semester p, .semester h3 {
-  margin-left: 5px;
+.semester h3 {
+  margin-left: 4px;
 }
 
 /* -------------------- Course Finder -------------------- */
@@ -163,22 +160,13 @@ p {
   display: inline;
 }
 
-.course-finder > p {
-  color: var(--tertiary);
-  margin-left: 10px;;
-}
-
 .searchBar {
-  /*display: inline-flex;*/
+  /* display: inline-flex; */
   margin-left: 10px;
 }
 
 input:invalid {
   color: firebrick;
-}
-
-#validationForm {
-  margin-left: 10px;
 }
 
 input:valid {
