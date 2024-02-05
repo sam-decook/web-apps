@@ -19,14 +19,14 @@ function validateForm() {
   };
 }
 
-let regex = /^[a-zA-Z,-]+$/;
+let regex = /^[a-zA-Z,-]*$/;
 
 function nameChanged() {
   const nameInput = document.getElementById("name");
   const nameError = document.getElementById("nameError");
 
   if (!regex.test(nameInput.value)) {
-    nameError.style.display = "block";
+    nameError.style.display = "inline-block";
     return false;
   } else {
     nameError.style.display = "none";
@@ -42,7 +42,7 @@ function majorChanged() {
 
   if (!regex.test(majorInput.value)) {
     //emailError.innerHTML = "Please enter a valid email address.";
-    majorError.style.display = "block";
+    majorError.style.display = "inline-block";
     return false;
   } else {
     majorError.style.display = "none";
@@ -58,7 +58,7 @@ function minorChanged() {
 
   if (!regex.test(minorInput.value)) {
     //emailError.innerHTML = "Please enter a valid email address.";
-    minorError.style.display = "block";
+    minorError.style.display = "inline-block";
     return false;
   } else {
     minorError.style.display = "none";

@@ -29,12 +29,17 @@ header {
 
 header h1 {
   text-align: center;
+  font-size: 2.3rem;
 }
 
 #personal {
   display: grid;
   grid-template-columns: 40% auto;
   align-content: center;
+}
+
+#personal p {
+  margin: 3px;
 }
 
 .controls {
@@ -168,10 +173,6 @@ p {
   margin-left: 10px;
 }
 
-input{
-  margin-left: 10px;
-}
-
 input:invalid {
   color: firebrick;
 }
@@ -182,4 +183,9 @@ input:invalid {
 
 input:valid {
   color: black;
+}
+
+.error {
+  color: red; 
+  display: none;
 }

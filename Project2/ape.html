@@ -18,10 +18,10 @@
     <!-- Start of the header across the top -->
     <header>
       <div id="personal">
-        <p id="nameHeader"><strong>Student:</strong> Joe Doe</p>
-        <p id="majorHeader"><strong>Major:</strong> AI Prompt Engineer</p>
-        <p id="catalogHeader"><strong>Catalog:</strong> 2019</p>
-        <p id="minorHeader"><strong>Minor: </strong> Women's Studies</p>
+        <p id="nameHeader"><b class="tag">Student</b> Joe Doe</p>
+        <p id="majorHeader"><b class="tag">Major</b> AI Prompt Engineer</p>
+        <p id="catalogHeader"><b class="tag">Catalog</b> 2019</p>
+        <p id="minorHeader"><b class="tag">Minor</b> Women's Studies</p>
       </div>
       <h1>ACADEMIC PLANNING</h1>
       <div class="controls">
@@ -82,14 +82,17 @@
         <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="post" target="_blank">
           <label for="name">Name: </label>
           <input type="text" id="name" name="name" onchange="nameChanged()" required>
+          <span id="nameError" class="error">Invalid name format!</span>
+          <br>
           <label for="major">Major: </label>
           <input type="text" id="major" name="major" onchange="majorChanged()" required>
+          <span id="majorError" class="error">Invalid major format!</span>
+          <br>
           <label for="minor">Minor: </label>
           <input type="text" id="minor" name="minor" onchange="minorChanged()" required>
-          <input type="submit" value="Submit">
-          <span id="nameError" style="color: red; display: none;">Invalid name format!</span>
-          <span id="majorError" style="color: red; display: none;">Invalid major format!</span>
-          <span id="minorError" style="color: red; display: none;">Invalid minor format!</span>
+          <span id="minorError" class="error">Invalid minor format!</span>
+          <br>
+          <input class="btn" type="submit" value="Submit">
         </form>
 
        <!-- <form id = "courseSearchForm" action="http://judah.cedarville.edu/echo.php" method = "POST" onchange="javascriptFunctionHereForOnChange()" onsubmit="javascriptFunctionHereForOnSubmit()">
