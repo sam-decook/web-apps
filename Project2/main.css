@@ -27,15 +27,11 @@ header {
   padding: 20px;
 }
 
-.logo {
+header h1 {
   text-align: center;
 }
 
-.headerP {
-  display: inline-block;
-}
-
-.personal {
+#personal {
   display: grid;
   grid-template-columns: 40% auto;
   align-content: center;
@@ -44,10 +40,6 @@ header {
 .controls {
   display: flex;
   flex-direction: row-reverse;
-}
-
-.options {
-  display: none;
 }
 
 /* -------------------- Tags -------------------- */
@@ -81,6 +73,7 @@ header {
   padding: 10px 20px;
   cursor: pointer;
 }
+
 .btn:hover {
   color: var(--accent);
   background-color: var(--secondary);
@@ -102,20 +95,8 @@ p {
   font-size: 0.9rem;
 }
 
-.main1 {
-  padding: 5px;
-}
-
-
-
 /* -------------------- Requirements -------------------- */
-#requirements {
-  background-color: #f0f0f1;
-  text-align: left;
-  color: black;
-}
-
-.req {
+#requirements h3 {
   color: var(--accent);
   background-color: var(--tertiary);
   border-radius: 0.3em;
@@ -137,7 +118,7 @@ p {
   justify-content: space-between;
 }
 
-.plan-info div {
+.plan-info p {
   margin-right: 10px;
   margin-top: 15px;
 }
@@ -148,7 +129,7 @@ p {
 
 .plan-grid {
   max-height: 90%;
-  overflow: scroll;
+  overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
@@ -186,6 +167,7 @@ p {
   /*display: inline-flex;*/
   margin-left: 10px;
 }
+
 input{
   margin-left: 10px;
 }
@@ -193,6 +175,7 @@ input{
 input:invalid {
   color: firebrick;
 }
+
 #validationForm {
   margin-left: 10px;
 }

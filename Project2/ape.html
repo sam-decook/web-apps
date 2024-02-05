@@ -17,19 +17,15 @@
   <body>
     <!-- Start of the header across the top -->
     <header>
-      <div class="personal">
-        <p class="headerP" id="nameHeader"><strong>Student:</strong> Joe Doe</p>
-        <p class="headerP" id="majorHeader"><strong>Major:</strong> AI Prompt Engineer</p>
-        <p class="headerP"><strong>Catalog:</strong> 2019</p>
-        <p class="headerP" id="minorHeader"><strong>Minor: </strong> Women's Studies</p>
+      <div id="personal">
+        <p id="nameHeader"><strong>Student:</strong> Joe Doe</p>
+        <p id="majorHeader"><strong>Major:</strong> AI Prompt Engineer</p>
+        <p id="catalogHeader"><strong>Catalog:</strong> 2019</p>
+        <p id="minorHeader"><strong>Minor: </strong> Women's Studies</p>
       </div>
-      <h1 class="logo">ACADEMIC PLANNING</h1>
+      <h1>ACADEMIC PLANNING</h1>
       <div class="controls">
-        <select
-          name="options"
-          id="options"
-          class="btn"
-        >
+        <select id="options" class="btn">
           <option hidden>Options</option>
           <option value="">Create Plan</option>
           <option value="">Manage Plans</option>
@@ -46,49 +42,33 @@
     </header>
     <main>
       <!-- The requirements section down the left-hand side -->
-      <div class="main1" id="requirements">
+      <div id="requirements">
         <h2>Requirements</h2>
-        <div id="req1" class="req">
-          <h3>AI Prompt Core</h3>
-        </div>
-        <div id="req2" class="req">
-          <h3>Tech Electives</h3>
-        </div>
-        <div id="req3" class="req">
-          <h3>Required Cognates</h3>
-        </div>
-        <div id="req4" class="req">
-          <h3>Junior Gate - GPA: 4.1</h3>
-        </div>
-        <div id="req5" class="req">
-          <h3>Cognate Gate - GPA: 4.1</h3>
-        </div>
-        <div id="req6" class="req">
-          <h3>GenEds (BS)</h3>
-        </div>
-        <div id="req7" class="req">
-          <h3>Women Studies Minor</h3>
-        </div>
+        <h3>AI Prompt Core</h3>
+        <h3>Tech Electives</h3>
+        <h3>Required Cognates</h3>
+        <h3>Junior Gate - GPA: 4.1</h3>
+        <h3>Cognate Gate - GPA: 4.1</h3>
+        <h3>GenEds (BS)</h3>
+        <h3>Women Studies Minor</h3>
       </div>
 
       <!-- The main section containing the scheduled plan -->
-      <div class="main2" id="plan">
+      <div class="plan">
         <div class="plan-info">
           <h2>Academic Plan</h2>
-          <div>
-            <p>
-              <span class="tag">GPA</span> 3.7 
-              <span class="tag">Major GPA</span> 3.2 
-              <span class="tag">Hours</span> 137
-            </p>
-          </div>
+          <p>
+            <span class="tag">GPA</span> 3.7
+            <span class="tag">Major GPA</span> 3.2
+            <span class="tag">Hours</span> 137
+          </p>
         </div>
-        
-        <div class="plan-grid"></div>
+        <div class="plan-grid">
+        </div>
       </div>
 
       <!-- The section containing the links to our respective homepages -->
-      <div class="main" id="homepages">
+      <div id="homepages">
         <h2>Home Pages</h2>
         <a class="btn" href="http://judah.cedarville.edu/~deCook/cs3220.html" target="_blank">Sam</a>
         <a class="btn" href="http://judah.cedarville.edu/~medeiro/cs3220.html" target="_blank">Henrique</a>
@@ -96,8 +76,8 @@
       </div>
 
       <!-- The section containing the course finder -->
-      <div class="course-finder" id="course-finder">
-        <h2>Course Finder</h2>
+      <div class="course-finder">
+        <h2>Form Validation</h2>
 
         <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="post" target="_blank">
           <label for="name">Name: </label>
