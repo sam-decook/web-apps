@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="main.css">
     <script src="script.js"></script>
     <script src="validate.js"></script>
+    <script src="dragndrop.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -79,7 +80,7 @@
       <div class="course-finder">
         <h2>Form Validation</h2>
 
-        <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="post" target="_blank">
+        <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="POST" target="_blank">
           <label for="name">Name: </label>
           <input type="text" id="name" name="name" onchange="nameChanged()" required>
           <span id="nameError" class="error">Invalid name format!</span>

@@ -74,15 +74,21 @@ function renderPlan() {
     Object.keys(organizedCourses[year]).forEach((term) => {
       const semesterDiv = document.createElement("div");
       semesterDiv.classList.add("semester");
+      semesterDiv.setAttribute("ondragover", "onDragOver(event);");
+      semesterDiv.setAttribute("ondragleave", "onDragLeave(event);");
+      semesterDiv.setAttribute("ondrop", "onDrop(event);");
       semesterDiv.id = `${term.toLowerCase()}${year}`;
 
       const heading = document.createElement("h3");
       heading.textContent = `${term} ${year}`;
       semesterDiv.appendChild(heading);
 
-      // Iterate through courses within each term
+      // Iterate through courses within each term. Create:
+      // <p><span class="tag" draggable="true">EGCP-3223</span> Class 1</p>
       organizedCourses[year][term].forEach((course) => {
         const courseParagraph = document.createElement("p");
+        courseParagraph.setAttribute("draggable", "true");
+        courseParagraph.setAttribute("ondragstart", "onDragStart(event);")
         const courseSpan = document.createElement("span");
         courseSpan.classList.add("tag");
         courseSpan.textContent = course.courseDesignator;
