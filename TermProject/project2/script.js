@@ -171,37 +171,46 @@ let plan = {
   ],
 };
 
+// Give each course a unique ID for drag and drop
+let courseId = 0;
+
 function renderPlan() {
   let elem = document.querySelector(".plan-grid");
 
   let organizedCourses = sortCourses(plan.courses);
 
-  // Iterate through years
   Object.keys(organizedCourses).forEach((year) => {
-    // Iterate through terms within each year
     Object.keys(organizedCourses[year]).forEach((term) => {
-      const semesterDiv = document.createElement("div");
+      let trueYear = Number(year);
+      if (term != "Fall") {
+        trueYear += 1;
+      }
+
+      let semesterDiv = document.createElement("div");
       semesterDiv.classList.add("semester");
       semesterDiv.setAttribute("ondragover", "onDragOver(event);");
       semesterDiv.setAttribute("ondragleave", "onDragLeave(event);");
       semesterDiv.setAttribute("ondrop", "onDrop(event);");
-      semesterDiv.id = `${term.toLowerCase()}${year}`;
+      semesterDiv.id = `${term.toLowerCase()}${trueYear}`;
 
       const heading = document.createElement("h3");
-      heading.textContent = `${term} ${year}`;
+      heading.textContent = `${term} ${trueYear}`;
       semesterDiv.appendChild(heading);
 
-      // Iterate through courses within each term. Create:
-      // <p><span class="tag" draggable="true">EGCP-3223</span> Class 1</p>
       organizedCourses[year][term].forEach((course) => {
-        const courseParagraph = document.createElement("p");
+        let courseParagraph = document.createElement("p");
         courseParagraph.setAttribute("draggable", "true");
         courseParagraph.setAttribute("ondragstart", "onDragStart(event);")
-        const courseSpan = document.createElement("span");
+        courseParagraph.setAttribute("id", String(courseId))
+        courseId += 1;
+
+        let courseSpan = document.createElement("span");
         courseSpan.classList.add("tag");
         courseSpan.textContent = course.courseDesignator;
+
         courseParagraph.appendChild(courseSpan);
         courseParagraph.append(` ${course.courseName}`);
+
         semesterDiv.appendChild(courseParagraph);
       });
 
@@ -212,20 +221,28 @@ function renderPlan() {
 
 //Course[{}] => Year[Term[Course[{}]]]
 function sortCourses(courseObj) {
-  const organizedCourses = {};
+  let organizedCourses = {};
   const terms = ["Fall", "Spring", "Summer"];
+
   courseObj.forEach((course) => {
-    if (!organizedCourses[course.year]) {
-      organizedCourses[course.year] = {};
+    let year = course.year;
+    if (course.term != "Fall") {
+      year -= 1;
+    }
+
+    if (!organizedCourses[year]) {
+      organizedCourses[year] = {};
       terms.forEach((term) => {
-        organizedCourses[course.year][term] = [];
+        organizedCourses[year][term] = [];
       });
     }
-    organizedCourses[course.year][course.term].push({
+
+    organizedCourses[year][course.term].push({
       courseDesignator: course.courseDesignator,
       courseName: course.courseName,
     });
   });
+
   return organizedCourses;
 }
 
