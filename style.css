@@ -7,7 +7,7 @@
     font-family: "Noto Serif Header";
     src: url("fonts/Noto_Serif/NotoSerif-VariableFont_wdth\,wght.ttf");
     font-optical-sizing: auto;
-    font-weight: 150;
+    font-weight: 100;
     font-style: normal;
     font-variation-settings: "wdth" 100;
 }
@@ -24,28 +24,42 @@
 :root {
   --bg: #30475E;
   --writing: #f0c863;
+  text-align: center;
 }
 
 h1 {
     margin-top: 4rem;
-    margin-bottom: 0px;
+    margin-bottom: 0.75rem;
     font-family: tangerine;
+    font-size: 3rem;
     text-align: center;
     color: var(--writing)
 }
 
 h2 {
     font-family: "Noto Serif Header";
-    font-size: 2rem;
-    text-align: center;
+    font-size: 3rem;
     color: var(--writing);
     margin-top: 0px;
 }
 
-a {
-    /* text-decoration: none; */
-    color: var(--writing);
+/* Taken at 150% */
+img {
+    max-width: 90%;
+    max-height: 90%;
+    margin-top: 1.5rem;
+    border-radius: 0.4rem;
+}
+
+p {
     font-family: "Noto Serif";
+    font-size: 1.5rem;
+    color: var(--writing);
+}
+
+.preview p {
+    font-family: tangerine;
+    font-size: 1.75rem;
 }
 
 body {
@@ -53,30 +67,36 @@ body {
     flex-shrink: 0;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-section {
-    background-color: var(--bg);
-    width: 45%;
     height: 95vh;
     display: flex;
+    margin: 1%; 
 }
 
 .page {
     flex-grow: 1;
     background-color: var(--bg);
     width: 40%;
-    border: var(--writing) solid 2px;
-    margin: 3%;
+    margin: 1rem;
 }
 
 .recipes {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
     align-content: center;
+    margin: 2rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
 }
 
 .recipe {
-    margin: 10px;
+    background-color: var(--bg);
+    border: var(--writing) solid 1px;
+    border-radius: 0.6rem;
+    margin: 0.5rem;
+}
+
+button:hover {
+    border: var(--writing) solid 2px;
+    background-color: #385672;
+    cursor: pointer;
 }

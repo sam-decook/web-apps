@@ -7,17 +7,39 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <section>
       <div class="page">
         <h1>Samuel DeCook Presents</h1>
         <h2>the Web Apps CookBook</h2>
         <div class="recipes">
-          <div class="recipe"><a href="TermProject/project1/ape.html">Project 1</a></div>
-          <div class="recipe"><a href="TermProject/project2/ape.html">Project 2</a></div>
-          <div class="recipe"><a>Project 3</a></div>
-          <div class="recipe"><a>Project 4</a></div>
+          <button class="recipe" onclick="location.href='TermProject/project1/ape.html';">
+            <div class="preview">
+              <img src="project1.webp" alt="academic planning website, v1">
+            </div>
+            <p>Project 1</p>
+          </button>
         </div>
       </div>
-    </section>
+      <div class="page">
+        <div class="recipes">
+          <button class="recipe" onclick="location.href='TermProject/project2/ape.html';">
+            <div class="preview">
+              <img src="project2.webp" alt="academic planning website, v2">
+            </div>
+            <p>Project 2</p>
+          </button>
+          <button class="recipe">
+            <div class="preview">
+              <p>Coming Soon!</p>
+            </div>
+            <p>Project 3</p>
+          </button>
+          <button class="recipe">
+            <div class="preview">
+              <p>Coming Soon!</p>
+            </div>
+            <p>Project 4</p>
+          </button>
+        </div>
+      </div>
   </body>
 </html>
