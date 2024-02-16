@@ -26,7 +26,7 @@ window.onload = function() {
                 makeSelect.disabled = false; 
             }
         };
-        xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year, true);
+        xhr.open('GET', 'http://judah.cedarville.edu/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year, true);
         xhr.send();
     }
 
@@ -44,7 +44,7 @@ window.onload = function() {
                 modelSelect.disabled = false; 
             }
         };
-        xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year + '&make=' + make, true);
+        xhr.open('GET', 'http://judah.cedarville.edu/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year + '&make=' + make, true);
         xhr.send();
     }
 
@@ -72,3 +72,23 @@ window.onload = function() {
     makeSelect.disabled = true;
     modelSelect.disabled = true;
 };
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://judah.cedarville.edu/~gallaghd/ymm/ymmdb.php?fmt=xml&year=2000", true);
+
+xhr.onload = function () {
+  if (xhr.status >= 200 && xhr.status < 300) {
+    
+    var parser = new DOMParser();
+    var xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
+    console.log(xmlDoc);
+  } else {
+    throw new Error("Network response was not ok");
+  }
+};
+
+xhr.onerror = function () {
+  console.error("Request failed");
+};
+
+xhr.send();
