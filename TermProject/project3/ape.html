@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Planning Environment</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js"></script>
+    <script src="validate.js"></script>
+    <script src="dragndrop.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    >
+  </head>
+  <body>
+    <!-- Start of the header across the top -->
+    <header>
+      <div id="personal">
+        <p id="nameHeader"><b class="tag">Student</b> Joe Doe</p>
+        <p id="majorHeader"><b class="tag">Major</b> AI Prompt Engineer</p>
+        <p id="catalogHeader"><b class="tag">Catalog</b> 2019</p>
+        <p id="minorHeader"><b class="tag">Minor</b> Women's Studies</p>
+      </div>
+      <h1>ACADEMIC PLANNING</h1>
+      <div class="controls">
+        <select id="options" class="btn">
+          <option hidden>Options</option>
+          <option value="">Create Plan</option>
+          <option value="">Manage Plans</option>
+          <option value="">Print</option>
+          <option value="">Show Grades</option>
+          <option value="">Waivers</option>
+          <option value="">About</option>
+          <option value="">Help</option>
+          <option value="">Report Bug</option>
+        </select>
+        <button class="btn">Log out</button>
+        <button class="btn">Save</button>
+      </div>
+    </header>
+    <main>
+      <!-- The requirements section down the left-hand side -->
+      <div id="requirements">
+        <h2>Requirements</h2>
+        <h3>AI Prompt Core</h3>
+        <h3>Tech Electives</h3>
+        <h3>Required Cognates</h3>
+        <h3>Junior Gate - GPA: 4.1</h3>
+        <h3>Cognate Gate - GPA: 4.1</h3>
+        <h3>GenEds (BS)</h3>
+        <h3>Women Studies Minor</h3>
+      </div>
+
+      <!-- The main section containing the scheduled plan -->
+      <div class="plan">
+        <div class="plan-info">
+          <h2>Academic Plan</h2>
+          <p>
+            <span class="tag">GPA</span> 3.7
+            <span class="tag">Major GPA</span> 3.2
+            <span class="tag">Hours</span> 137
+          </p>
+        </div>
+        <div class="plan-grid">
+        </div>
+      </div>
+
+      <!-- The section containing the links to our respective homepages -->
+      <div id="homepages">
+        <h2>Home Pages</h2>
+        <a class="btn" href="http://judah.cedarville.edu/~deCook/cs3220.html" target="_blank">Sam</a>
+        <a class="btn" href="http://judah.cedarville.edu/~medeiro/cs3220.html" target="_blank">Henrique</a>
+        <a class="btn" href="http://judah.cedarville.edu/~brugel/cs3220.html" target="_blank">Matt</a>
+        <a class="btn" href="http://judah.cedarville.edu" target="_blank">Home</a>
+        <form id="kbbForm">
+          <label for="year">Select Year:</label>
+          <select id="year" name="year">
+              <option value="">Select Year</option>
+          </select><br><br>
+          
+          <label for="make">Select Make:</label>
+          <select id="make" name="make">
+              
+              <option value="">Select Make</option>
+          </select><br><br>
+          
+          <label for="model">Select Model:</label>
+          <select id="model" name="model">
+              <option value="">Select Model</option>
+          </select><br><br>
+      </form>
+      </div>
+
+      <!-- The section containing the course finder -->
+      <div class="course-finder">
+        <h2>Form Validation</h2>
+
+        <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="POST" target="_blank">
+          <label for="name">Name: </label>
+          <input type="text" id="name" name="name" onchange="nameChanged()" required>
+          <span id="nameError" class="error">Invalid name format!</span>
+          <br>
+          <label for="major">Major: </label>
+          <input type="text" id="major" name="major" onchange="majorChanged()" required>
+          <span id="majorError" class="error">Invalid major format!</span>
+          <br>
+          <label for="minor">Minor: </label>
+          <input type="text" id="minor" name="minor" onchange="minorChanged()" required>
+          <span id="minorError" class="error">Invalid minor format!</span>
+          <br>
+          <input class="btn" type="submit" value="Submit">
+        </form>
+
+       <!-- <form id = "courseSearchForm" action="http://judah.cedarville.edu/echo.php" method = "POST" onchange="javascriptFunctionHereForOnChange()" onsubmit="javascriptFunctionHereForOnSubmit()">
+          <label for=""></label>  
+          <input type="text" id="courseSearch" name="courseSearch" placeholder="Search" pattern="([A-Z]{2,4}-\d{4})?(\w|\s)*" title="Must be a course designator or name">
+          <datalist id="courseSearch">
+            <option value="CS-3220 Web applications"></option>
+            <option value="CS-3410 Algorithims"></option>
+            <option value="EGCP-4310 Advanced Computer Architecture"></option>
+            <option value="MATH-1710 Calculus I"></option>
+            <option value="EGGN-1110 The Engineering Profession"></option>
+            <option value="EGCP-1010 Digital Logic Design"></option>
+            <option value="CS-1210 C++ Programming"></option>
+            <option value="PHYS-2110 General Physics I"></option>
+            <option value="MATH-1720 Calculus II"></option>
+            <option value="CS-1220 Object Oriented Design With C++"></option>
+            <option value="BTEG-1725 The Bible and the Gospel"></option>
+            <option value="ENG-1400 Composition"></option>
+          </datalist>
+          <input type = "submit" id="submitBtn">
+        </form>
+      -->
+      </div>
+    </main>
+  </body>
+</html>
