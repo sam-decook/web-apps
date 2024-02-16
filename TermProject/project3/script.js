@@ -1,10 +1,12 @@
 console.log("Getting combined")
 
-fetch("/~knoerr/cs3220/termProject/getCombined.php")
+function test1(){
+fetch("http://judah.cedarville.edu/~knoerr/cs3220/termProject/getCombined.php")
   .then((response) => {
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Network response was not ok 1");
     }
+    console(1);
     return response.json();
   })
   .then((data) => {
@@ -13,14 +15,17 @@ fetch("/~knoerr/cs3220/termProject/getCombined.php")
   .catch((error) => {
     console.error("There has been a problem with your fetch operation:", error);
   });
+}
 
+function test2(){
 console.log("Getting requirements")
 
-fetch("/~knoerr/cs3220/termProject/getRequirements.php")
+fetch("http://judah.cedarville.edu/~knoerr/cs3220/termProject/getRequirements.php")
   .then((response) => {
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Network response was not ok 2");
     }
+    console.log(2);
     return response.json();
   })
   .then((data) => {
@@ -31,6 +36,10 @@ fetch("/~knoerr/cs3220/termProject/getRequirements.php")
   });
 
 console.log("Done")
+}
+
+test1();
+test2();
 
 let plan = {
   name: "Whatever you want really",
