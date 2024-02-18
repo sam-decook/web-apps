@@ -14,37 +14,55 @@ window.onload = function() {
 
     function fetchMakes(year) {
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var xmlData = xhr.responseXML;
-                var makes = xmlData.getElementsByTagName('make');
+        xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year, true);
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+                var makes = xmlDoc.getElementsByTagName('make');
                 var makeList = [];
                 for (var i = 0; i < makes.length; i++) {
                     makeList.push(makes[i].textContent);
                 }
                 populateDropdown(makeSelect, makeList);
-                makeSelect.disabled = false; 
+                makeSelect.disabled = false;
+            } else {
+                throw new Error('Network response was not ok');
             }
         };
-        xhr.open('GET', 'http://judah.cedarville.edu/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year, true);
+
+        xhr.onerror = function () {
+            console.error('Request failed');
+        };
+
         xhr.send();
     }
 
     function fetchModels(year, make) {
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var xmlData = xhr.responseXML;
-                var models = xmlData.getElementsByTagName('model');
+        xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year + '&make=' + make, true);
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+                var models = xmlDoc.getElementsByTagName('model');
                 var modelList = [];
                 for (var i = 0; i < models.length; i++) {
                     modelList.push(models[i].textContent);
                 }
                 populateDropdown(modelSelect, modelList);
-                modelSelect.disabled = false; 
+                modelSelect.disabled = false;
+            } else {
+                throw new Error('Network response was not ok');
             }
         };
-        xhr.open('GET', 'http://judah.cedarville.edu/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year + '&make=' + make, true);
+
+        xhr.onerror = function () {
+            console.error('Request failed');
+        };
+
         xhr.send();
     }
 
@@ -52,9 +70,9 @@ window.onload = function() {
         var selectedYear = yearSelect.value;
         if (selectedYear !== '') {
             makeSelect.selectedIndex = 0;
-            modelSelect.selectedIndex = 0; 
-            makeSelect.disabled = true;
-            modelSelect.disabled = true;
+            modelSelect.selectedIndex = 0;
+            makeSelect.disabled = true; 
+            modelSelect.disabled = true; 
             fetchMakes(selectedYear);
         }
     };
@@ -63,32 +81,13 @@ window.onload = function() {
         var selectedYear = yearSelect.value;
         var selectedMake = makeSelect.value;
         if (selectedMake !== '') {
-            modelSelect.selectedIndex = 0; 
+            modelSelect.selectedIndex = 0;
             modelSelect.disabled = true;
             fetchModels(selectedYear, selectedMake);
         }
     };
 
+
     makeSelect.disabled = true;
     modelSelect.disabled = true;
 };
-
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://judah.cedarville.edu/~gallaghd/ymm/ymmdb.php?fmt=xml&year=2000", true);
-
-xhr.onload = function () {
-  if (xhr.status >= 200 && xhr.status < 300) {
-    
-    var parser = new DOMParser();
-    var xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
-    console.log(xmlDoc);
-  } else {
-    throw new Error("Network response was not ok");
-  }
-};
-
-xhr.onerror = function () {
-  console.error("Request failed");
-};
-
-xhr.send();
