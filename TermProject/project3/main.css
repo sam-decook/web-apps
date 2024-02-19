@@ -141,7 +141,6 @@ p {
 }
 
 .plan-grid {
-  overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;

@@ -1,0 +1,110 @@
+{
+  "student": "joe",
+  "name": "myPlan",
+  "major": "Computer Science",
+  "currYear": 2022,
+  "currTerm": "Spring",
+  "courses": {
+    "CS-1210": {
+      "id": "CS-1210",
+      "year": 2021,
+      "term": "Fall"
+    },
+    "MATH-1710": {
+      "id": "MATH-1710",
+      "year": 2022,
+      "term": "Spring"
+    },
+    "EGCP-1010": {
+      "id": "EGCP-1010",
+      "year": 2021,
+      "term": "Fall"
+    },
+    "CS-1220": {
+      "id": "CS-1220",
+      "year": 2022,
+      "term": "Spring"
+    },
+    "BTGE-1725": {
+      "id": "BTGE-1725",
+      "year": 2022,
+      "term": "Spring"
+    },
+    "PHYS-2110": {
+      "id": "PHYS-2110",
+      "year": 2022,
+      "term": "Spring"
+    },
+    "CS-2210": {
+      "id": "CS-2210",
+      "year": 2022,
+      "term": "Fall"
+    },
+    "PHYS-2120": {
+      "id": "PHYS-2120",
+      "year": 2022,
+      "term": "Fall"
+    },
+    "CS-3310": {
+      "id": "CS-3310",
+      "year": 2023,
+      "term": "Spring"
+    },
+    "CS-3350": {
+      "id": "CS-3350",
+      "year": 2023,
+      "term": "Spring"
+    },
+    "MATH-2520": {
+      "id": "MATH-2520",
+      "year": 2023,
+      "term": "Spring"
+    },
+    "EGCP-3210": {
+      "id": "EGCP-3210",
+      "year": 2023,
+      "term": "Spring"
+    },
+    "CS-3410": {
+      "id": "CS-3410",
+      "year": 2023,
+      "term": "Fall"
+    },
+    "EGCP-4310": {
+      "id": "EGCP-4310",
+      "year": 2023,
+      "term": "Fall"
+    },
+    "CS-3610": {
+      "id": "CS-3610",
+      "year": 2024,
+      "term": "Spring"
+    },
+    "CS-3220": {
+      "id": "CS-3220",
+      "year": 2024,
+      "term": "Spring"
+    },
+    "CS-4810": {
+      "id": "CS-4810",
+      "year": 2024,
+      "term": "Fall"
+    },
+    "EGGN-4010": {
+      "id": "EGGN-4010",
+      "year": 2024,
+      "term": "Fall"
+    },
+    "EGGN-3110": {
+      "id": "EGGN-3110",
+      "year": 2025,
+      "term": "Spring"
+    },
+    "CS-3510": {
+      "id": "CS-3510",
+      "year": 2025,
+      "term": "Spring"
+    }
+  },
+  "catYear": 2021
+}

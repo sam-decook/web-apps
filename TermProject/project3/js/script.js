@@ -8,16 +8,6 @@ fetch("http://judah.cedarville.edu/~knoerr/cs3220/termProject/getCombined.php")
   .then(data => console.log(data.plan))
   .catch(error => console.error("Request failed: ", error));
 
-fetch("http://judah.cedarville.edu/~knoerr/cs3220/termProject/getRequirements.php")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok 2");
-    }
-    return response.json();
-  })
-  .then(data => console.log(data.categories))
-  .catch(error => console.error("Request failed: ", error));
-
 
 let plan = {
   name: "Whatever you want really",
@@ -245,7 +235,7 @@ function sortCourses(courseObj) {
   let organizedCourses = {};
   const terms = ["Fall", "Spring", "Summer"];
 
-  courseObj.forEach((course) => {
+  courseObj.forEach(course => {
     let year = course.year;
     if (course.term != "Fall") {
       year -= 1;

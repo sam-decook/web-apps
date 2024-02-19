@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic Planning Environment</title>
     <link rel="stylesheet" href="main.css">
-    <script src="script.js"></script>
-    <script src="validate.js"></script>
-    <script src="dragndrop.js"></script>
-    <script src="kbb.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/validate.js"></script>
+    <script src="js/dragndrop.js"></script>
+    <script src="js/kbb.js"></script>
+    <script src="js/requirements.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -46,13 +49,14 @@
       <!-- The requirements section down the left-hand side -->
       <div id="requirements">
         <h2>Requirements</h2>
-        <h3>AI Prompt Core</h3>
+        <div id="accordion"></div>
+        <!-- <h3>AI Prompt Core</h3>
         <h3>Tech Electives</h3>
         <h3>Required Cognates</h3>
         <h3>Junior Gate - GPA: 4.1</h3>
         <h3>Cognate Gate - GPA: 4.1</h3>
         <h3>GenEds (BS)</h3>
-        <h3>Women Studies Minor</h3>
+        <h3>Women Studies Minor</h3> -->
       </div>
 
       <!-- The main section containing the scheduled plan -->
@@ -65,8 +69,7 @@
             <span class="tag">Hours</span> 137
           </p>
         </div>
-        <div class="plan-grid">
-        </div>
+        <div class="plan-grid"></div>
       </div>
 
       <!-- The section containing the links to our respective homepages -->
@@ -97,44 +100,23 @@
 
       <!-- The section containing the course finder -->
       <div class="course-finder">
-        <h2>Form Validation</h2>
-
-        <form id="validationForm" action="http://judah.cedarville.edu/echo.php" method="POST" target="_blank">
-          <label for="name">Name: </label>
-          <input type="text" id="name" name="name" onchange="nameChanged()" required>
-          <span id="nameError" class="error">Invalid name format!</span>
-          <br>
-          <label for="major">Major: </label>
-          <input type="text" id="major" name="major" onchange="majorChanged()" required>
-          <span id="majorError" class="error">Invalid major format!</span>
-          <br>
-          <label for="minor">Minor: </label>
-          <input type="text" id="minor" name="minor" onchange="minorChanged()" required>
-          <span id="minorError" class="error">Invalid minor format!</span>
-          <br>
-          <input class="btn" type="submit" value="Submit">
-        </form>
-
-       <!-- <form id = "courseSearchForm" action="http://judah.cedarville.edu/echo.php" method = "POST" onchange="javascriptFunctionHereForOnChange()" onsubmit="javascriptFunctionHereForOnSubmit()">
-          <label for=""></label>  
-          <input type="text" id="courseSearch" name="courseSearch" placeholder="Search" pattern="([A-Z]{2,4}-\d{4})?(\w|\s)*" title="Must be a course designator or name">
-          <datalist id="courseSearch">
-            <option value="CS-3220 Web applications"></option>
-            <option value="CS-3410 Algorithims"></option>
-            <option value="EGCP-4310 Advanced Computer Architecture"></option>
-            <option value="MATH-1710 Calculus I"></option>
-            <option value="EGGN-1110 The Engineering Profession"></option>
-            <option value="EGCP-1010 Digital Logic Design"></option>
-            <option value="CS-1210 C++ Programming"></option>
-            <option value="PHYS-2110 General Physics I"></option>
-            <option value="MATH-1720 Calculus II"></option>
-            <option value="CS-1220 Object Oriented Design With C++"></option>
-            <option value="BTEG-1725 The Bible and the Gospel"></option>
-            <option value="ENG-1400 Composition"></option>
-          </datalist>
-          <input type = "submit" id="submitBtn">
-        </form>
-      -->
+        <h2>Course Finder</h2>
+        <input list="courseSearch" id="courseSearch" name="courseSearch" pattern="([A-Z]{2,4}-\d{4})?(\w|\s)*" title="Must be a course designator or name">
+        <datalist id="courseSearch">
+          <option value="CS-3220 Web applications"></option>
+          <option value="CS-3410 Algorithims"></option>
+          <option value="EGCP-4310 Advanced Computer Architecture"></option>
+          <option value="MATH-1710 Calculus I"></option>
+          <option value="EGGN-1110 The Engineering Profession"></option>
+          <option value="EGCP-1010 Digital Logic Design"></option>
+          <option value="CS-1210 C++ Programming"></option>
+          <option value="PHYS-2110 General Physics I"></option>
+          <option value="MATH-1720 Calculus II"></option>
+          <option value="CS-1220 Object Oriented Design With C++"></option>
+          <option value="BTEG-1725 The Bible and the Gospel"></option>
+          <option value="ENG-1400 Composition"></option>
+        </datalist>
+        <p>Showing 1 to 12 of 12 entries</p>
       </div>
     </main>
   </body>
