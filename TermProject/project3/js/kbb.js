@@ -12,6 +12,33 @@ window.onload = function() {
         }
     }
 
+    function fetchYears () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml', true);
+
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+                var years = xmlDoc.getElementsByTagName('year');
+                var yearList = [];
+                for (var i = 0; i < year.length; i++) {
+                    yearList.push(year[i].textContent);
+                }
+                populateDropdown(yearSelect, yearList);
+                yearSelect.disabled = false;
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Request failed');
+        };
+
+        xhr.send();
+    }
+
     function fetchMakes(year) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year, true);

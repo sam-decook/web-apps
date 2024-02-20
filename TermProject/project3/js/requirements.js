@@ -4,30 +4,33 @@
 //   content...
 // </div>
 // ...
-let acc = $("#accordion");
-console.log(acc)
 
-{
+document.addEventListener("DOMContentLoaded", renderReqs);
+
+function renderReqs() {
+    let acc = $("#accordion");
+    console.log(acc);
+
     header = $("h3");
-    console.log(header)
+    console.log(header);
     header.text("Core");
-    console.log(header)
+    console.log(header);
     div = $("div");
 
-    Object.values(reqs.Core.courses).forEach(course => {
-        let span = $("span");
-        span.addClass("tag");
-        span.html(course)
-        let p = ($("p").append(span));
-        div.append(p)
+    Object.values(reqs.Core.courses).forEach((course) => {
+    let span = $("span");
+    span.addClass("tag");
+    span.html(course);
+    let p = $("p").append(span);
+    div.append(p);
     });
-    acc.append(header)
-    acc.append(div)
-}
+    acc.append(header);
+    acc.append(div);
 
-// JQuery accordion
-$(function() {
+    // JQuery accordion
+    $(function () {
     $("#accordion").accordion({
-        collapsible: true
+        collapsible: true,
     });
-});
+    });
+}
