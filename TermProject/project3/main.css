@@ -96,6 +96,7 @@ main > div {
   margin: 4px;
   padding: 0.7rem;
   border-radius: 0.5rem;
+  overflow: scroll;
 }
 
 p {
@@ -103,10 +104,6 @@ p {
 }
 
 /* -------------------- Requirements -------------------- */
-#requirements {
-  overflow: scroll;
-}
-
 #requirements h3 {
   color: var(--accent);
   background-color: var(--tertiary);
@@ -117,10 +114,6 @@ p {
 }
 
 /* -------------------- Plan -------------------- */
-.plan {
-  overflow: scroll;
-}
-
 .plan-info {
   display: grid;
   grid-template-columns: auto auto;
