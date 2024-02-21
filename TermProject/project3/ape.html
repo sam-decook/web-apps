@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- <meta http-equiv="refresh" content="5" /> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic Planning Environment</title>
@@ -93,21 +94,15 @@
       <div class="course-finder">
         <h2>Course Finder</h2>
         <input list="courseSearch" id="courseSearch" name="courseSearch" pattern="([A-Z]{2,4}-\d{4})?(\w|\s)*" title="Must be a course designator or name">
-        <datalist id="courseSearch">
-          <option value="CS-3220 Web applications"></option>
-          <option value="CS-3410 Algorithims"></option>
-          <option value="EGCP-4310 Advanced Computer Architecture"></option>
-          <option value="MATH-1710 Calculus I"></option>
-          <option value="EGGN-1110 The Engineering Profession"></option>
-          <option value="EGCP-1010 Digital Logic Design"></option>
-          <option value="CS-1210 C++ Programming"></option>
-          <option value="PHYS-2110 General Physics I"></option>
-          <option value="MATH-1720 Calculus II"></option>
-          <option value="CS-1220 Object Oriented Design With C++"></option>
-          <option value="BTEG-1725 The Bible and the Gospel"></option>
-          <option value="ENG-1400 Composition"></option>
-        </datalist>
-        <p>Showing 1 to 12 of 12 entries</p>
+        <p></p>
+        <table id="coursesTable">
+          <tr>
+            <th>Credits</th>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Description</th>
+          </tr>
+        </table>
       </div>
     </main>
   </body>
