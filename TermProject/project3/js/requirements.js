@@ -9,28 +9,31 @@ document.addEventListener("DOMContentLoaded", renderReqs);
 
 function renderReqs() {
     let acc = $("#accordion");
-    console.log(acc);
 
-    header = $("h3");
-    console.log(header);
-    header.text("Core");
-    console.log(header);
-    div = $("div");
+    let sections = Object.keys(requirements);
+    sections.forEach(s => {
+        let section = requirements[s];
+        let header = $(`<h3>${s}</h3>`);
+        let div = $("<div></div>");
 
-    Object.values(reqs.Core.courses).forEach((course) => {
-    let span = $("span");
-    span.addClass("tag");
-    span.html(course);
-    let p = $("p").append(span);
-    div.append(p);
+        let courses = section.courses;
+        courses.forEach(course => {
+            div.append($(`<p><span class="tag">${course}</span> ${getName(course)}</p>`));
+        });
+
+        acc.append(header);
+        acc.append(div);
     });
-    acc.append(header);
-    acc.append(div);
+
 
     // JQuery accordion
     $(function () {
-    $("#accordion").accordion({
-        collapsible: true,
+        $("#accordion").accordion({
+            collapsible: true,
+        });
     });
-    });
+}
+
+function getName(courseId) {
+    return catalog.courses[courseId].name;
 }

@@ -4,40 +4,41 @@ window.onload = function() {
     var modelSelect = document.getElementById('model');
 
     function populateDropdown(select, data) {
-        select.innerHTML = '';
         for (var i = 0; i < data.length; i++) {
             var option = document.createElement('option');
             option.text = data[i];
             select.add(option);
         }
     }
-
-    function fetchYears () {
+    function fetchYears() {       
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml', true);
+        xhr.open("GET", "/~gallaghd/ymm/ymmdb.php?fmt=xml", true);
 
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {
                 var parser = new DOMParser();
-                var xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
-                var years = xmlDoc.getElementsByTagName('year');
+                var xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
+                console.log(xmlDoc);
+                var year = xmlDoc.getElementsByTagName('year');
                 var yearList = [];
                 for (var i = 0; i < year.length; i++) {
                     yearList.push(year[i].textContent);
                 }
+                yearSelect.innerHTML = '<option value="">Select Year</option>';
                 populateDropdown(yearSelect, yearList);
                 yearSelect.disabled = false;
             } else {
-                throw new Error('Network response was not ok');
+                throw new Error("Network response was not ok");
             }
         };
 
         xhr.onerror = function () {
-            console.error('Request failed');
+            console.error("Request failed");
         };
 
         xhr.send();
     }
+
 
     function fetchMakes(year) {
         var xhr = new XMLHttpRequest();
@@ -52,6 +53,7 @@ window.onload = function() {
                 for (var i = 0; i < makes.length; i++) {
                     makeList.push(makes[i].textContent);
                 }
+                makeSelect.innerHTML = '<option value="">Select Make</option>';
                 populateDropdown(makeSelect, makeList);
                 makeSelect.disabled = false;
             } else {
@@ -79,6 +81,7 @@ window.onload = function() {
                 for (var i = 0; i < models.length; i++) {
                     modelList.push(models[i].textContent);
                 }
+                modelSelect.innerHTML = '<option value="">Select Model</option>';
                 populateDropdown(modelSelect, modelList);
                 modelSelect.disabled = false;
             } else {
@@ -92,6 +95,8 @@ window.onload = function() {
 
         xhr.send();
     }
+
+    fetchYears();
 
     yearSelect.onchange = function() {
         var selectedYear = yearSelect.value;
