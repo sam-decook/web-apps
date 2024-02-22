@@ -482,7 +482,7 @@ function renderPlan() {
   console.log("Organized courses: " + courses);
 
   Object.keys(courses).forEach(year => {
-    Object.keys(organizedCourses[year]).forEach((term) => {
+    Object.keys(organizeCourses[year]).forEach((term) => {
       let trueYear = Number(year);
       if (term != "Fall") {
         trueYear += 1;
@@ -490,13 +490,13 @@ function renderPlan() {
 
       let $div = $(`<div class="semester" ondragover="onDragOver(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div>`);
 
-      semesterDiv.id = `${term.toLowerCase()}${trueYear}`;
+      $div.id = `${term.toLowerCase()}${trueYear}`;
 
       const heading = document.createElement("h3");
       heading.textContent = `${term} ${trueYear}`;
-      semesterDiv.appendChild(heading);
+      $div.append(heading);
 
-      organizedCourses[year][term].forEach((course) => {
+      organizeCourses[year][term].forEach((course) => {
         let desig = course.courseDesignator;
         let name = course.courseName;
         let $course = $(`<p id="${id}" draggable="true" ondragstart="onDragStart(event)"><span class="tag">${desig}</span> ${name}</p>`);
@@ -504,7 +504,7 @@ function renderPlan() {
         $div.append($course)
       });
 
-      $elem.appendChild(semesterDiv);
+      $elem.append($div);
     });
   });
 }
@@ -532,70 +532,45 @@ function organizeCourses(plan) {
   });
 }
 
-$(document).ready(function(){
-  
-  function populateCourseFinder(){
-
-  const $courseSearch = $("#courseSearch");  
-  $courseSearch.empty();
-
-  if(courseId.match(/[A-Z]{2,4}-\d{4}/)){
-    addCourseToTable(, courseId, catalog.courses[courseId].name, catalog.courses[courseId].description);
-  }
-  
-  $.each(catalog.courses, function(courseId, courseName){
-  
-    $('<option>').val(`${courseId} ${courseName}`).appendTo($courseSearch);
-    
-  });
-
-  const totalEntries = Object.keys(catalog.courses).length;
-  const totalEntriesText = `Showing 1 to ${totalEntries} of ${totalEntries} entries`;
-  $('.course-finder p').text(totalEntriesText);
-  }
-
-  populateCourseFinder();
-
-  function addCourseToTable(credits, id, name, description) {
-    var newRow = $('<tr></tr>');
-    newRow.append($('<td></td>').text(credits));
-    newRow.append($('<td></td>').text(id));
-    newRow.append($('<td></td>').text(name));
-    newRow.append($('<td></td>').text(description));
-    $('#coursesTable').append(newRow); 
-  }
-  
-  
-
-
-});
-
 document.addEventListener("DOMContentLoaded", renderPlan);
 
-async function fetchcourses(){
-  try{
-    const response = await fetch("getCombined.json");
-    if (!response.ok){
-      throw new Error("Failed to fetch");
-    }
-    const data = await response.json();
-    return data.courses;
-  }catch (error){
-    console.error(error);
-  }
-}
 
-
-async function populateTable(){
-  const courses = await fetchcourses();
-  const table = document.getElementById("coursesTable");
+function populateTable(){
+  const courses = catalog.courses;
+  const tbody = $("#helloitsme");
+ 
   for (const courseId in courses){
     const course = courses[courseId];
-    const row = table.insertRow();
-    row.innerHTML = '<td>${course.credits}</td><td>${course.id}</td><td>${course.name}</td><td>${course.description}</td>';
+    var newRow = $('<tr></tr>');
+    newRow.append($('<td></td>').text(course.credits));
+    newRow.append($('<td></td>').text(course.id));
+    newRow.append($('<td></td>').text(course.name));
+    newRow.append($('<td></td>').text(course.description));
+    tbody.append(newRow); 
   }
 }
 
+function searchCourses() {
+  const input = document.getElementById("searchBar").ariaValueMax.toUpperCase();
+  const table = document.getElementById("courseTable");
+  const rows = table.getElementsByTagName("tr");
 
+  for (let i = 1; i < rows.length; i++){
+    let matchFound = false;
+    for (let j = o; j < rows[i].cells.length; j++){
+      const cellText = rows[i].cells[j].innerText.toUpperCase();
+      if (cellText.includes(input)){
+        matchFound = true;
+        break;
+      }
+    }
+    if (matchFound) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
 
+document.addEventListener("DOMContentLoaded", populateTable);
 
