@@ -585,6 +585,7 @@ function organizeCourses(plan) {
 
 document.addEventListener("DOMContentLoaded", renderPlan);
 
+function renderCourseFinder(){
 
 function populateTable(){
   const courses = catalog.courses;
@@ -601,17 +602,34 @@ function populateTable(){
   }
 }
 
+populateTable();
+let number = $('#helloitsme tr').length;
+updateNumberOfEntries(number);
+}
+
+function updateNumberOfEntries(totalVisibleEntries) {
+  if(totalVisibleEntries === 0){
+    $('#test123').text("No entries found");
+    return;
+  }
+  const totalEntriesText = `Showing 1 to ${totalVisibleEntries} of ${totalVisibleEntries} entries`;
+  $('#test123').text(totalEntriesText); 
+}
+
+
 function searchCourses() {
-  const input = document.getElementById("searchBar").ariaValueMax.toUpperCase();
-  const table = document.getElementById("courseTable");
+  const input = document.getElementById("searchBar").value.toUpperCase();
+  const table = document.getElementById("coursesTable");
   const rows = table.getElementsByTagName("tr");
+  let visibleCount = 0;
 
   for (let i = 1; i < rows.length; i++){
     let matchFound = false;
-    for (let j = o; j < rows[i].cells.length; j++){
+    for (let j = 0; j < rows[i].cells.length; j++){
       const cellText = rows[i].cells[j].innerText.toUpperCase();
       if (cellText.includes(input)){
         matchFound = true;
+        visibleCount++;
         break;
       }
     }
@@ -621,7 +639,10 @@ function searchCourses() {
       rows[i].style.display = "none";
     }
   }
+  updateNumberOfEntries(visibleCount);
 }
 
-document.addEventListener("DOMContentLoaded", populateTable);
+
+
+document.addEventListener("DOMContentLoaded", renderCourseFinder);
 
