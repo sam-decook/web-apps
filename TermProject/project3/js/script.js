@@ -477,12 +477,60 @@ let courseId = 0;
 function renderPlan() {
   let $elem = $(".plan-grid");
 
-  // let organizedCourses = sortCourses(plan.courses);
-  let courses = organizeCourses(plan);
-  console.log("Organized courses: " + courses);
+  // let courses = organizeCourses(plan);
+  let courses = {
+    "2021": {
+      "Fall": [
+        "CS-1210",
+        "EGCP-1010"
+      ],
+      "Spring": [
+        "MATH-1710",
+        "CS-1220",
+        "BTGE-1725",
+        "PHYS-2110"
+      ],
+      "Summer": []
+    },
+    "2022": {
+      "Fall": [
+        "CS-2210",
+        "PHYS-2120"
+      ],
+      "Spring": [
+        "CS-3310",
+        "CS-3350",
+        "MATH-2520",
+        "EGCP-3210"
+      ],
+      "Summer": []
+    },
+    "2023": {
+      "Fall": [
+        "CS-3410",
+        "EGCP-4310"
+      ],
+      "Spring": [
+        "CS-3610",
+        "CS-3220"
+      ],
+      "Summer": []
+    },
+    "2024": {
+      "Fall": [
+        "CS-4810",
+        "EGGN-4010"
+      ],
+      "Spring": [
+        "EGGN-3110",
+        "CS-3510"
+      ],
+      "Summer": []
+    }
+  };
 
   Object.keys(courses).forEach(year => {
-    Object.keys(organizeCourses[year]).forEach((term) => {
+    Object.keys(courses[year]).forEach((term) => {
       let trueYear = Number(year);
       if (term != "Fall") {
         trueYear += 1;
@@ -496,7 +544,7 @@ function renderPlan() {
       heading.textContent = `${term} ${trueYear}`;
       $div.append(heading);
 
-      organizeCourses[year][term].forEach((course) => {
+      courses[year][term].forEach((course) => {
         let desig = course.courseDesignator;
         let name = course.courseName;
         let $course = $(`<p id="${id}" draggable="true" ondragstart="onDragStart(event)"><span class="tag">${desig}</span> ${name}</p>`);
@@ -513,7 +561,8 @@ function organizeCourses(plan) {
   let courses = {};
   let terms = ["Fall", "Spring", "Summer"];
 
-  Object.keys(plan.courses).forEach(course => {
+  Object.keys(plan.courses).forEach(courseId => {
+    let course = plan.courses[courseId];
     let year = course.year;
     if (course.term != "Fall") {
       year -= 1;
@@ -526,10 +575,10 @@ function organizeCourses(plan) {
       });
     }
 
-    courses[year][course.term].push(course);
-
-    return courses;
+    courses[year][course.term].push(course.id);
   });
+
+  return courses;
 }
 
 document.addEventListener("DOMContentLoaded", renderPlan);
