@@ -530,19 +530,21 @@ function renderPlan() {
   };
 
   Object.keys(courses).forEach(year => {
-    Object.keys(courses[year]).forEach((term) => {
-      let trueYear = Number(year);
+    let trueYear = Number(year);
+
+    Object.keys(courses[year]).forEach(term => {
       if (term != "Fall") {
         trueYear += 1;
       }
 
-      let $div = $(`<div class="semester" ondragover="onDragOver(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div>`);
-
-      $div.id = `${term.toLowerCase()}${trueYear}`;
+      let id = `${term.toLowerCase()}${trueYear}`;
+      let dnd = "ondragover='onDragOver(event);' ondragleave='onDragLeave(event);' ondrop='onDrop(event);'";
+      let $div = $(`<div id=${id} class="semester" ${dnd}></div>`);
 
       const heading = document.createElement("h3");
       heading.textContent = `${term} ${trueYear}`;
       $div.append(heading);
+      console.log($div);
 
       courses[year][term].forEach((course) => {
         let desig = course.courseDesignator;
