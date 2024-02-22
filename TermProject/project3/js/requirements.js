@@ -22,7 +22,6 @@ function renderReqs() {
         $acc.append($div);
     });
 
-
     // JQuery accordion
     $(function () {
         $("#accordion").accordion({

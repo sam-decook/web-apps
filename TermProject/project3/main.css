@@ -157,6 +157,10 @@ p {
 }
 
 /* -------------------- Course Finder -------------------- */
+th {
+  text-align: left;
+}
+
 .course-finder h2, 
 .course-finder p, 
 .course-finder input {

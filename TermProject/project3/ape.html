@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <meta http-equiv="refresh" content="5" /> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic Planning Environment</title>
     <link rel="stylesheet" href="main.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/dragndrop.js"></script>
-    <script src="js/kbb.js"></script>
+    <script src="js/plan.js"></script>
     <script src="js/requirements.js"></script>
+    <script src="js/finder.js"></script>
+    <script src="js/kbb.js"></script>
+    <script src="js/dragndrop.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -20,7 +20,7 @@
     >
   </head>
   <body>
-    <!-- Start of the header across the top -->
+    <!-- The header across the top -->
     <header>
       <div id="personal">
         <p id="nameHeader"><b class="tag">Student</b> Joe Doe</p>
@@ -94,23 +94,19 @@
       <div class="course-finder">
         <h2>Course Finder</h2>
         <input type="text" id="searchBar" onkeyup="searchCourses()" name="courseSearch">
-        <p id="test123"></p>
+        <p id="numEntries"></p>
         <table id="coursesTable">
           <thead>
-          <tr>
-            <th>Credits</th>
-            <th>Course ID</th>
-            <th>Course Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody id="helloitsme"> </tbody>
+            <tr>
+              <th>Credits</th>
+              <th>Course ID</th>
+              <th>Course Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody id="coursesBody"></tbody>
         </table>
       </div>
-
-    
-
-
     </main>
   </body>
 </html>

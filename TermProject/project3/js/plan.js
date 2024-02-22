@@ -446,6 +446,8 @@ let requirements = {
   }
 };
 
+document.addEventListener("DOMContentLoaded", renderPlan);
+
 // fetch("~knoerr/cs3220/termProject/getCombined.php")
 //   .then(response => {
 //     if (!response.ok) {
@@ -472,62 +474,12 @@ let requirements = {
 //   .catch(error => console.error("Request failed: ", error));
 
 // Give each course a unique ID for drag and drop
-let courseId = 0;
+let id = 0;
 
 function renderPlan() {
   let $elem = $(".plan-grid");
 
-  // let courses = organizeCourses(plan);
-  let courses = {
-    "2021": {
-      "Fall": [
-        "CS-1210",
-        "EGCP-1010"
-      ],
-      "Spring": [
-        "MATH-1710",
-        "CS-1220",
-        "BTGE-1725",
-        "PHYS-2110"
-      ],
-      "Summer": []
-    },
-    "2022": {
-      "Fall": [
-        "CS-2210",
-        "PHYS-2120"
-      ],
-      "Spring": [
-        "CS-3310",
-        "CS-3350",
-        "MATH-2520",
-        "EGCP-3210"
-      ],
-      "Summer": []
-    },
-    "2023": {
-      "Fall": [
-        "CS-3410",
-        "EGCP-4310"
-      ],
-      "Spring": [
-        "CS-3610",
-        "CS-3220"
-      ],
-      "Summer": []
-    },
-    "2024": {
-      "Fall": [
-        "CS-4810",
-        "EGGN-4010"
-      ],
-      "Spring": [
-        "EGGN-3110",
-        "CS-3510"
-      ],
-      "Summer": []
-    }
-  };
+  let courses = organizeCourses(plan);
 
   Object.keys(courses).forEach(year => {
     let trueYear = Number(year);
@@ -537,21 +489,19 @@ function renderPlan() {
         trueYear += 1;
       }
 
-      let id = `${term.toLowerCase()}${trueYear}`;
+      let semester = `${term.toLowerCase()}${trueYear}`;
       let dnd = "ondragover='onDragOver(event);' ondragleave='onDragLeave(event);' ondrop='onDrop(event);'";
-      let $div = $(`<div id=${id} class="semester" ${dnd}></div>`);
+      let $div = $(`<div id=${semester} class="semester" ${dnd}></div>`);
 
       const heading = document.createElement("h3");
       heading.textContent = `${term} ${trueYear}`;
       $div.append(heading);
-      console.log($div);
 
-      courses[year][term].forEach((course) => {
-        let desig = course.courseDesignator;
-        let name = course.courseName;
-        let $course = $(`<p id="${id}" draggable="true" ondragstart="onDragStart(event)"><span class="tag">${desig}</span> ${name}</p>`);
-        courseId += 1;
-        $div.append($course)
+      courses[year][term].forEach(course => {
+        let name = catalog.courses[course].name;
+        let $course = $(`<p id="${id}" draggable="true" ondragstart="onDragStart(event)"><span class="tag">${course}</span> ${name}</p>`);
+        id += 1;
+        $div.append($course);
       });
 
       $elem.append($div);
@@ -582,67 +532,3 @@ function organizeCourses(plan) {
 
   return courses;
 }
-
-document.addEventListener("DOMContentLoaded", renderPlan);
-
-function renderCourseFinder(){
-
-function populateTable(){
-  const courses = catalog.courses;
-  const tbody = $("#helloitsme");
- 
-  for (const courseId in courses){
-    const course = courses[courseId];
-    var newRow = $('<tr></tr>');
-    newRow.append($('<td></td>').text(course.credits));
-    newRow.append($('<td></td>').text(course.id));
-    newRow.append($('<td></td>').text(course.name));
-    newRow.append($('<td></td>').text(course.description));
-    tbody.append(newRow); 
-  }
-}
-
-populateTable();
-let number = $('#helloitsme tr').length;
-updateNumberOfEntries(number);
-}
-
-function updateNumberOfEntries(totalVisibleEntries) {
-  if(totalVisibleEntries === 0){
-    $('#test123').text("No entries found");
-    return;
-  }
-  const totalEntriesText = `Showing 1 to ${totalVisibleEntries} of ${totalVisibleEntries} entries`;
-  $('#test123').text(totalEntriesText); 
-}
-
-
-function searchCourses() {
-  const input = document.getElementById("searchBar").value.toUpperCase();
-  const table = document.getElementById("coursesTable");
-  const rows = table.getElementsByTagName("tr");
-  let visibleCount = 0;
-
-  for (let i = 1; i < rows.length; i++){
-    let matchFound = false;
-    for (let j = 0; j < rows[i].cells.length; j++){
-      const cellText = rows[i].cells[j].innerText.toUpperCase();
-      if (cellText.includes(input)){
-        matchFound = true;
-        visibleCount++;
-        break;
-      }
-    }
-    if (matchFound) {
-      rows[i].style.display = "";
-    } else {
-      rows[i].style.display = "none";
-    }
-  }
-  updateNumberOfEntries(visibleCount);
-}
-
-
-
-document.addEventListener("DOMContentLoaded", renderCourseFinder);
-

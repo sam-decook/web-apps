@@ -46,19 +46,19 @@ function startSelection() {
         xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year, true);
 
         xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                let parser = new DOMParser();
-                let xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
-                let makes = xmlDoc.getElementsByTagName('make');
-                let makeList = [];
-                for (let i = 0; i < makes.length; i++) {
-                    makeList.push(makes[i].textContent);
-                }
-                populateDropdown($makeSelect, makeList);
-                $makeSelect.disabled = false;
-            } else {
+            if (xhr.status < 200 || xhr.status >= 300) {
                 throw new Error('Network response was not ok');
             }
+
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+            let makes = xmlDoc.getElementsByTagName('make');
+            let makeList = [];
+            for (let i = 0; i < makes.length; i++) {
+                makeList.push(makes[i].textContent);
+            }
+            populateDropdown($makeSelect, makeList);
+            $makeSelect.disabled = false;
         };
 
         xhr.onerror = function () {
@@ -73,19 +73,19 @@ function startSelection() {
         xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year + '&make=' + make, true);
 
         xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                let parser = new DOMParser();
-                let xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
-                let models = xmlDoc.getElementsByTagName('model');
-                let modelList = [];
-                for (let i = 0; i < models.length; i++) {
-                    modelList.push(models[i].textContent);
-                }
-                populateDropdown($modelSelect, modelList);
-                $modelSelect.disabled = false;
-            } else {
+            if (xhr.status < 200 || xhr.status >= 300) {
                 throw new Error('Network response was not ok');
             }
+
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+            let models = xmlDoc.getElementsByTagName('model');
+            let modelList = [];
+            for (let i = 0; i < models.length; i++) {
+                modelList.push(models[i].textContent);
+            }
+            populateDropdown($modelSelect, modelList);
+            $modelSelect.disabled = false;
         };
 
         xhr.onerror = function () {
