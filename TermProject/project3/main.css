@@ -168,27 +168,18 @@ p {
   margin-left: 10px;
 }
 
-input:invalid {
-  color: firebrick;
-}
-
-input:valid {
-  color: black;
-}
-
-.error {
-  color: red; 
-  display: none;
-}
-
-table {
+.course-finder table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 30px; 
 }
-th, td {
+
+.course-finder th,
+.course-finder td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
 }
-th {
+
+.course-finder th {
   background-color: #f2f2f2;
 }
