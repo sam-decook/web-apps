@@ -4,14 +4,12 @@ window.onload = function() {
     var modelSelect = document.getElementById('model');
 
     function populateDropdown(select, data) {
-        select.innerHTML = '';
         for (var i = 0; i < data.length; i++) {
             var option = document.createElement('option');
             option.text = data[i];
             select.add(option);
         }
     }
-
     function fetchYears() {       
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "/~gallaghd/ymm/ymmdb.php?fmt=xml", true);
@@ -20,11 +18,13 @@ window.onload = function() {
             if (xhr.status >= 200 && xhr.status < 300) {
                 var parser = new DOMParser();
                 var xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
+                console.log(xmlDoc);
                 var year = xmlDoc.getElementsByTagName('year');
                 var yearList = [];
                 for (var i = 0; i < year.length; i++) {
                     yearList.push(year[i].textContent);
                 }
+                yearSelect.innerHTML = '<option value="">Select Year</option>';
                 populateDropdown(yearSelect, yearList);
                 yearSelect.disabled = false;
             } else {
@@ -39,6 +39,7 @@ window.onload = function() {
         xhr.send();
     }
 
+
     function fetchMakes(year) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/~gallaghd/ymm/ymmdb.php?fmt=xml&year=' + year, true);
@@ -52,6 +53,7 @@ window.onload = function() {
                 for (var i = 0; i < makes.length; i++) {
                     makeList.push(makes[i].textContent);
                 }
+                makeSelect.innerHTML = '<option value="">Select Make</option>';
                 populateDropdown(makeSelect, makeList);
                 makeSelect.disabled = false;
             } else {
@@ -79,6 +81,7 @@ window.onload = function() {
                 for (var i = 0; i < models.length; i++) {
                     modelList.push(models[i].textContent);
                 }
+                modelSelect.innerHTML = '<option value="">Select Model</option>';
                 populateDropdown(modelSelect, modelList);
                 modelSelect.disabled = false;
             } else {
@@ -103,11 +106,6 @@ window.onload = function() {
             makeSelect.disabled = true; 
             modelSelect.disabled = true; 
             fetchMakes(selectedYear);
-        } else {
-            makeSelect.selectedIndex = 0;
-            modelSelect.selectedIndex = 0;
-            makeSelect.disabled = true; 
-            modelSelect.disabled = true;
         }
     };
 
@@ -118,11 +116,9 @@ window.onload = function() {
             modelSelect.selectedIndex = 0;
             modelSelect.disabled = true;
             fetchModels(selectedYear, selectedMake);
-        } else {
-            modelSelect.selectedIndex = 0;
-            modelSelect.disabled = true;
         }
     };
+
 
     makeSelect.disabled = true;
     modelSelect.disabled = true;
