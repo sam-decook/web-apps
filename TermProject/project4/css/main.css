@@ -58,7 +58,11 @@ header h1 {
   border-radius: 3px;
 }
 
-.semester p:hover {
+.semester > p {
+  cursor: pointer;
+}
+
+.semester > p:hover {
   background-color: var(--primary);
 }
 
@@ -111,6 +115,12 @@ p {
   padding: 5px;
   padding-left: 10px;
   margin: 5px 0px;
+  cursor: pointer;
+}
+
+#requirements p {
+  cursor: pointer;
+  margin-top: 0.25rem;
 }
 
 /* -------------------- Plan -------------------- */
@@ -148,12 +158,19 @@ p {
   margin: 5px;
 }
 
-.semester h3 {
-  margin-left: 4px;
+.semester-info {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
 }
 
-.semester p {
-  cursor: pointer;
+.semester-info span {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+.semester h3 {
+  margin-left: 4px;
 }
 
 /* -------------------- Course Finder -------------------- */
@@ -183,6 +200,10 @@ p {
 
 th {
   text-align: left;
+}
+
+tr {
+  cursor: pointer;
 }
 
 .course-finder th,
