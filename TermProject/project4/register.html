@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APE Login Page</title>
+    <title>APE Registration Page</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,8 +15,16 @@
   </head>
   <body>
     <div class="login-container">
-      <h2>Welcome to the Academic Planning Environment</h2>
-      <form id="login-form" action="login.php" method="POST">
+      <h2>Register for the Academic Planning Environment</h2>
+      <form id="login-form" action="register.php" method="POST">
+        <div class="form-group">
+          <label for="full-name">Full Name:</label>
+          <input type="text" id="full-name" name="full-name" required>
+        </div>
+        <div class="form-group">
+          <label for="major">Major:</label>
+          <input type="text" id="major" name="major" required>
+        </div>
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="text" id="email" name="email" required>
@@ -26,7 +34,7 @@
           <input type="password" id="password" name="password" required>
         </div>
         <div class="form-group">
-          <button class="btn" type="submit">Login</button>
+          <button class="btn" type="submit">Register</button>
         </div>
       </form>
     </div>

@@ -15,22 +15,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo "Connected successfully";
 
-    $stmt = $conn->prepare("SELECT email, password FROM HMS_User WHERE email = ? AND password = ?");
-    $stmt->bind_param("ss", $_POST["email"], $_POST["password"]);
+    $stmt = $conn->prepare("SELECT email, password FROM HMS_User WHERE email = ?");
+    $stmt->bind_param("s", $_POST["email"]);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        $_SESSION["email"] = $row["email"];
-        header("Location: ape.html");
-        exit;
-    } else {
-        header("Location: login.html?error=invalid_credentials");
-        exit;
-    }
 
+        if(password_verify($_POST["password"], $row["password"])) {
+            $_SESSION["email"] = $row["email"];
+            header("Location: ape.html");
+            $conn->close();
+            exit;
+        }
+    }
+    
+    header("Location: login.html?error=invalid_credentials");
     $conn->close();
+    exit;
 } else {
     header("Location: login.html");
     exit;
