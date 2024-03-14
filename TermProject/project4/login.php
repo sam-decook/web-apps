@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    echo "Connected successfully";
 
     $stmt = $conn->prepare("SELECT email, password FROM HMS_User WHERE email = ?");
     $stmt->bind_param("s", $_POST["email"]);
@@ -61,8 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    header("Location: login.html?error=invalid_credentials");
-    $conn->close();
-    exit;
+    echo "Invalid credentials";
 }
 ?>

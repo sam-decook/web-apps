@@ -1,8 +1,8 @@
-<!-- <?php
-if (!isset($_SESSION["email"])) {
-  header("Location: https://judah.cedarville.edu/~medeiro/TermProject/project4/login.html");
+<?php
+if (!isset($_COOKIE["PHPSESSID"])) {
+  header("Location: login.php");
 }
-?>  -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 
