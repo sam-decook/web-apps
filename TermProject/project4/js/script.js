@@ -482,6 +482,11 @@ let id = 0;
 let totalHours = 0.0;
 
 function renderPlan() {
+  $(".plan-info h2").text(plan.name);
+  $("#nameHeader").html(`<b class="tag">Student</b> ${plan.student}`);
+  $("#majorHeader").html(`<b class="tag">Major</b> ${plan.major}`);
+  $("#catalogHeader").html(`<b class="tag">Catalog</b> ${catalog.year}`);
+
   let $elem = $(".plan-grid");
 
   let courses = organizeCourses(plan);

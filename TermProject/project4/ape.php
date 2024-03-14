@@ -23,10 +23,10 @@ if (!isset($_COOKIE["PHPSESSID"])) {
 <body>
   <!-- The header across the top -->
   <header>
-    <div id="personal">3
-      <p id="nameHeader"><b class="tag">Student</b> Joe Doe</p>
-      <p id="majorHeader"><b class="tag">Major</b> AI Prompt Engineer</p>
-      <p id="catalogHeader"><b class="tag">Catalog</b> 2019</p>
+    <div id="personal">
+      <p id="nameHeader"><b class="tag">Student</b></p>
+      <p id="majorHeader"><b class="tag">Major</b></p>
+      <p id="catalogHeader"><b class="tag">Catalog</b></p>
       <p id="minorHeader"><b class="tag">Minor</b> Women's Studies</p>
     </div>
     <h1>ACADEMIC PLANNING</h1>

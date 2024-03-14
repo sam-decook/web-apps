@@ -6,6 +6,7 @@ body {
     height: 66vh; /* to align it on the upper third */
     margin: 0;
     background-color: var(--accent);
+    background-image: url("login-desert.webp");
 }
 
 .login-container {
