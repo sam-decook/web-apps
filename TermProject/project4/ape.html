@@ -1,96 +1,101 @@
+<?php
+if (!isset($_SESSION["email"])) {
+  header("Location: https://judah.cedarville.edu/~medeiro/TermProject/project4/login.html");
+}
+?> 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Planning Environment</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/dragndrop.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    >
-  </head>
-  <body>
-    <!-- The header across the top -->
-    <header>
-      <div id="personal">
-        <p id="nameHeader"><b class="tag">Student</b> Joe Doe</p>
-        <p id="majorHeader"><b class="tag">Major</b> AI Prompt Engineer</p>
-        <p id="catalogHeader"><b class="tag">Catalog</b> 2019</p>
-        <p id="minorHeader"><b class="tag">Minor</b> Women's Studies</p>
-      </div>
-      <h1>ACADEMIC PLANNING</h1>
-      <div class="controls">
-        <select id="options" class="btn">
-          <option hidden>Options</option>
-          <option value="">Create Plan</option>
-          <option value="">Manage Plans</option>
-          <option value="">Print</option>
-          <option value="">Show Grades</option>
-          <option value="">Waivers</option>
-          <option value="">About</option>
-          <option value="">Help</option>
-          <option value="">Report Bug</option>
-        </select>
-        <button class="btn">Log out</button>
-        <button class="btn">Save</button>
-      </div>
-    </header>
-    <main>
-      <!-- The requirements section down the left-hand side -->
-      <div id="requirements">
-        <h2>Requirements</h2>
-        <div id="accordion">
-        </div>
-      </div>
 
-      <!-- The main section containing the scheduled plan -->
-      <div class="plan">
-        <div class="plan-info">
-          <h2>Academic Plan</h2>
-          <p>
-            <span class="tag">GPA</span> 3.7
-            <span class="tag">Major GPA</span> 3.2
-            <span class="tag">Total Hours</span> 137
-          </p>
-        </div>
-        <div class="plan-grid">
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Planning Environment</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/dragndrop.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
 
-      <!-- The section containing the links to our respective homepages -->
-      <div id="homepages">
-        <h2>Home Pages</h2>
-        <a class="btn" href="/~deCook/cs3220.html" target="_blank">Sam</a>
-        <a class="btn" href="/~medeiro/cs3220.html" target="_blank">Henrique</a>
-        <a class="btn" href="/~brugel/cs3220.html" target="_blank">Matt</a>
-        <a class="btn" href="http://judah.cedarville.edu" target="_blank">Home</a>
+<body>
+  <!-- The header across the top -->
+  <header>
+    <div id="personal">3
+      <p id="nameHeader"><b class="tag">Student</b> Joe Doe</p>
+      <p id="majorHeader"><b class="tag">Major</b> AI Prompt Engineer</p>
+      <p id="catalogHeader"><b class="tag">Catalog</b> 2019</p>
+      <p id="minorHeader"><b class="tag">Minor</b> Women's Studies</p>
+    </div>
+    <h1>ACADEMIC PLANNING</h1>
+    <div class="controls">
+      <select id="options" class="btn">
+        <option hidden>Options</option>
+        <option value="">Create Plan</option>
+        <option value="">Manage Plans</option>
+        <option value="">Print</option>
+        <option value="">Show Grades</option>
+        <option value="">Waivers</option>
+        <option value="">About</option>
+        <option value="">Help</option>
+        <option value="">Report Bug</option>
+      </select>
+      <button class="btn">Log out</button>
+      <button class="btn">Save</button>
+    </div>
+  </header>
+  <main>
+    <!-- The requirements section down the left-hand side -->
+    <div id="requirements">
+      <h2>Requirements</h2>
+      <div id="accordion">
       </div>
+    </div>
 
-      <!-- The section containing the course finder -->
-      <div class="course-finder">
-        <h2>Course Finder</h2>
-        <input type="text" id="searchBar" onkeyup="searchCourses()" name="courseSearch">
-        <p id="numEntries"></p>
-        <table id="coursesTable">
-          <thead>
-            <tr>
-              <th>Credits</th>
-              <th>Course ID</th>
-              <th>Course Name</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody id="coursesBody">
-          </tbody>
-        </table>
+    <!-- The main section containing the scheduled plan -->
+    <div class="plan">
+      <div class="plan-info">
+        <h2>Academic Plan</h2>
+        <p>
+          <span class="tag">GPA</span> 3.7
+          <span class="tag">Major GPA</span> 3.2
+          <span class="tag">Total Hours</span> 137
+        </p>
       </div>
-    </main>
-  </body>
+      <div class="plan-grid">
+      </div>
+    </div>
+
+    <!-- The section containing the links to our respective homepages -->
+    <div id="homepages">
+      <h2>Home Pages</h2>
+      <a class="btn" href="/~deCook/cs3220.html" target="_blank">Sam</a>
+      <a class="btn" href="/~medeiro/cs3220.html" target="_blank">Henrique</a>
+      <a class="btn" href="/~brugel/cs3220.html" target="_blank">Matt</a>
+      <a class="btn" href="http://judah.cedarville.edu" target="_blank">Home</a>
+    </div>
+
+    <!-- The section containing the course finder -->
+    <div class="course-finder">
+      <h2>Course Finder</h2>
+      <input type="text" id="searchBar" onkeyup="searchCourses()" name="courseSearch">
+      <p id="numEntries"></p>
+      <table id="coursesTable">
+        <thead>
+          <tr>
+            <th>Credits</th>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody id="coursesBody">
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+
 </html>
