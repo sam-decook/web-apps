@@ -1,6 +1,8 @@
-let plan = {
+let plan = {};
+
+let plan321TEST_here = {
   "student": "joe",
-  "name": "myPlan",
+  "name": "Plan",
   "major": "Computer Science",
   "currYear": 2022,
   "currTerm": "Spring",
@@ -108,7 +110,10 @@ let plan = {
   },
   "catYear": 2021
 };
-let catalog = {
+
+let catalog = {};
+
+let catalogTesting321HERE = {
   "year": 2021,
   "courses": {
     "CS-1210": {
@@ -389,7 +394,9 @@ let catalog = {
     }
   }
 };
-let requirements = {
+let requirements = {};
+
+let test321Shouldberequierements = {
   "categories": {
     "Core": {
       "courses": [
@@ -448,17 +455,55 @@ let requirements = {
   }
 };
 
-// fetch("/~knoerr/cs3220/termProject/getRequirements.php")
-// .then(response => {
-//   if (!response.ok) {
-//     throw new Error("Network response was not ok");
-//   }
-//   return response.json();
-// })
-// .then(data => {
-//   requirements = data;
-// })
-// .catch(error => console.error("Request failed: ", error));
+fetch("/~medeiro/TermProject/project4/server.php")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then(data => {
+    catalog = data.catalog;
+    requirements = data.requirements;
+    plan = data.plan;
+  })
+  .catch(error => console.error("Request failed: ", error));
+
+// fetch("/~medeiro/TermProject/project4/catalog.php")
+//  .then(response => {
+//    if (!response.ok) {
+//      throw new Error("Network response was not ok");
+//    }
+//    return response.json();
+//  })
+//  .then(data => {
+//    catalog = data;
+//  })
+//  .catch(error => console.error("Request failed: ", error));
+
+// fetch("/~medeiro/TermProject/project4/getRequirements.php")
+//  .then(response => {
+//    if (!response.ok) {
+//      throw new Error("Network response was not ok");
+//    }
+//    return response.json();
+//  })
+//  .then(data => {
+//    requirements = data;
+//  })
+//  .catch(error => console.error("Request failed: ", error));
+
+//  fetch("/~medeiro/TermProject/project4/plan.php")
+//  .then(response => {
+//    if (!response.ok) {
+//      throw new Error("Network response was not ok");
+//    }
+//    return response.json();
+//  })
+//  .then(data => {
+//    plan = data;
+//  })
+//  .catch(error => console.error("Request failed: ", error));
 
 // fetch("/~knoerr/cs3220/termProject/getCombined.php")
 //   .then(response => {
@@ -492,7 +537,7 @@ function renderPlan() {
   let courses = organizeCourses(plan);
 
   Object.keys(courses).forEach(year => {
-    
+
     Object.keys(courses[year]).forEach(term => {
       let trueYear = Number(year);
       if (term != "Fall") {
@@ -563,23 +608,23 @@ function renderReqs() {
   let sections = Object.keys(requirements.categories);
 
   sections.forEach(s => {
-      let section = requirements.categories[s];
-      let $header = $(`<h3>${s}</h3>`);
-      let $div = $("<div></div>");
-      let courses = section.courses;
-      courses.forEach(course => {
-          $div.append($(`<p draggable="true" ondragstart="onDragStart(event)"><span class="tag">${course}</span> ${getName(course)}</p>`));
-      });
+    let section = requirements.categories[s];
+    let $header = $(`<h3>${s}</h3>`);
+    let $div = $("<div></div>");
+    let courses = section.courses;
+    courses.forEach(course => {
+      $div.append($(`<p draggable="true" ondragstart="onDragStart(event)"><span class="tag">${course}</span> ${getName(course)}</p>`));
+    });
 
-      $acc.append($header);
-      $acc.append($div);
+    $acc.append($header);
+    $acc.append($div);
   });
 
   // JQuery accordion
   $(function () {
-      $("#accordion").accordion({
-          collapsible: true,
-      });
+    $("#accordion").accordion({
+      collapsible: true,
+    });
   });
 }
 
@@ -588,14 +633,14 @@ function renderCourseFinder() {
   let courses = catalog.courses;
   let tbody = $("#coursesBody");
 
-  for (let courseId in courses){
+  for (let courseId in courses) {
     let course = courses[courseId];
     let $newRow = $('<tr draggable="true" ondragstart="onDragStart(event)"></tr>');
     $newRow.append($(`<td>${course.credits}</td>`));
     $newRow.append($(`<td><span class="tag">${course.id}</span></td>`));
     $newRow.append($(`<td>${course.name}</td>`));
     $newRow.append($(`<td>${course.description}</td>`));
-    tbody.append($newRow); 
+    tbody.append($newRow);
   }
 
   let number = $('#coursesBody tr').length;
@@ -603,11 +648,11 @@ function renderCourseFinder() {
 }
 
 function updateNumberOfEntries(totalVisibleEntries) {
-  if(totalVisibleEntries === 0){
+  if (totalVisibleEntries === 0) {
     $('#numEntries').text("No entries found");
     return;
   }
-  $('#numEntries').text(`Showing 1 to ${totalVisibleEntries} of ${totalVisibleEntries} entries`); 
+  $('#numEntries').text(`Showing 1 to ${totalVisibleEntries} of ${totalVisibleEntries} entries`);
 }
 
 function searchCourses() {
@@ -635,7 +680,7 @@ function searchCourses() {
   updateNumberOfEntries(visibleCount);
 }
 
-window.onload = function() {
+window.onload = function () {
   renderPlan();
   renderCourseFinder();
   renderReqs();

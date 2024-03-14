@@ -27,7 +27,7 @@ if (!isset($_COOKIE["PHPSESSID"])) {
       <p id="nameHeader"><b class="tag">Student</b></p>
       <p id="majorHeader"><b class="tag">Major</b></p>
       <p id="catalogHeader"><b class="tag">Catalog</b></p>
-      <p id="minorHeader"><b class="tag">Minor</b> Women's Studies</p>
+      <p id="minorHeader"><b class="tag">Minor</b> Bible</p>
     </div>
     <h1>ACADEMIC PLANNING</h1>
     <div class="controls">

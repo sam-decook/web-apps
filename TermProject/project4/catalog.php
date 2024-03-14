@@ -43,4 +43,4 @@ $stmt->close();
 
 $conn->close();
 
-echo json_encode($catalog);
+echo json_encode($catalog, JSON_PRETTY_PRINT);
