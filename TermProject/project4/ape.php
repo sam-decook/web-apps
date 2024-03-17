@@ -2,6 +2,9 @@
 if (!isset($_COOKIE["PHPSESSID"])) {
   header("Location: login.php");
 }
+header("Cache-Control: no-cache, no-store, must-revalidate"); 
+header("Pragma: no-cache");
+header("Expires: 0");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +45,7 @@ if (!isset($_COOKIE["PHPSESSID"])) {
         <option value="">Help</option>
         <option value="">Report Bug</option>
       </select>
-      <button class="btn">Log out</button>
+      <button class="btn" onclick="logout()">Log out</button>
       <button class="btn">Save</button>
     </div>
   </header>
@@ -85,10 +88,10 @@ if (!isset($_COOKIE["PHPSESSID"])) {
       <table id="coursesTable">
         <thead>
           <tr>
-            <th>Credits</th>
-            <th>Course ID</th>
-            <th>Course Name</th>
-            <th>Description</th>
+            <th onclick="sortTable(0)">Credits</th>
+            <th onclick="sortTable(1)" >Course ID</th>
+            <th onclick="sortTable(2)">Course Name</th>
+            <th onclick="sortTable(3)">Description</th>
           </tr>
         </thead>
         <tbody id="coursesBody">
