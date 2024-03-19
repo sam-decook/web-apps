@@ -30,6 +30,7 @@
     </body>
 </html>
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $server = "james.cedarville.edu";
     $username = "cs3220_sp24";
@@ -43,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    $stmt = $conn->prepare("SELECT email, password FROM HMS_User WHERE email = ?");
+    $stmt = $conn->prepare("SELECT email, userID, password FROM HMS_User WHERE email = ?");
     $stmt->bind_param("s", $_POST["email"]);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -51,15 +52,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
 
-        if (password_verify($_POST["password"], $row["password"])) {
-            session_start();
+        if (password_verify($_POST["password"], $row["password"])) {  
+                 
             $_SESSION["email"] = $row["email"];
+            $_SESSION["userID"] = $row["userID"];
             header("Location: ape.php");
             $conn->close();
             exit;
         }
     }
-
     echo "Invalid credentials";
+    $stmt->close();
+    $conn->close();
 }
 ?>

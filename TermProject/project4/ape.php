@@ -2,9 +2,9 @@
 if (!isset($_COOKIE["PHPSESSID"])) {
   header("Location: login.php");
 }
-header("Cache-Control: no-cache, no-store, must-revalidate"); 
-header("Pragma: no-cache");
-header("Expires: 0");
+// header("Cache-Control: no-cache, no-store, must-revalidate"); 
+// header("Pragma: no-cache");
+// header("Expires: 0");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,18 +33,26 @@ header("Expires: 0");
       <p id="minorHeader"><b class="tag">Minor</b> Bible</p>
     </div>
     <h1>ACADEMIC PLANNING</h1>
+
+
     <div class="controls">
-      <select id="options" class="btn">
-        <option hidden>Options</option>
-        <option value="">Create Plan</option>
-        <option value="">Manage Plans</option>
-        <option value="">Print</option>
-        <option value="">Show Grades</option>
-        <option value="">Waivers</option>
-        <option value="">About</option>
-        <option value="">Help</option>
-        <option value="">Report Bug</option>
-      </select>
+      <div class="custom-dropdown">
+        <button class="dropbtn">Options</button>
+        <div class="dropdown-content">
+          <a href="#">Create Plan</a>
+          <div class="submenu">
+            <a href="#" class="submenu-title">Manage Plans</a>
+            <div class="submenu-content">
+            </div>
+          </div>
+          <a href="#">Print</a>
+          <a href="#">Show Grades</a>
+          <a href="#">Waivers</a>
+          <a href="#">About</a>
+          <a href="#">Help</a>
+          <a href="#">Report Bug</a>
+        </div>
+      </div>
       <button class="btn" onclick="logout()">Log out</button>
       <button class="btn">Save</button>
     </div>
@@ -82,14 +90,20 @@ header("Expires: 0");
 
     <!-- The section containing the course finder -->
     <div class="course-finder">
-      <h2>Course Finder</h2>
-      <input type="text" id="searchBar" onkeyup="searchCourses()" name="courseSearch">
-      <p id="numEntries"></p>
+    <div id="courseHeader">
+        <h2>Course Finder</h2>
+        <input type="text" id="searchBar" onkeyup="searchCourses()" name="courseSearch">
+        <p id="numEntries"></p>
+        <div class="btn" id="delete-button" ondragover='onDragOver(event);' ondragleave='onDragLeave(event);' ondrop='deleteCourse(event);'>
+          <img src="delete-button.png" alt="delete icon" width="30" height="30">
+          <p><b>Delete</b></p>
+        </div>
+      </div>
       <table id="coursesTable">
         <thead>
           <tr>
             <th onclick="sortTable(0)">Credits</th>
-            <th onclick="sortTable(1)" >Course ID</th>
+            <th onclick="sortTable(1)">Course ID</th>
             <th onclick="sortTable(2)">Course Name</th>
             <th onclick="sortTable(3)">Description</th>
           </tr>

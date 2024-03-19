@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 header('Content-Type: application/json');
 
 $server = "james.cedarville.edu";    
@@ -13,12 +15,39 @@ if ($conn->connect_error) {
     exit;
 }
 
-$currentUserID = 1; 
-$currentPlanID = 1; 
+$currentUserID = $_SESSION["userID"]; 
+
+$stmt = $conn->prepare("SELECT planID FROM HMS_Plan WHERE userID = ? ORDER BY planID ASC LIMIT 1");
+$stmt->bind_param("i", $currentUserID);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows == 1) {
+    $row = $result->fetch_assoc();
+    $currentPlanID = $row['planID'];
+} else {
+    echo json_encode(["error" => "User has no plans"]);
+    exit;
+}
+$stmt->close();
+
+$stmt = $conn->prepare("SELECT majorID FROM HMS_MajorPlan WHERE planID = ?");
+$stmt->bind_param("i", $currentPlanID);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $currentMajorID = $row['majorID'];
+} else {
+    echo json_encode(["error" => "User has no plans"]);
+    exit;
+}
+$stmt->close();
 $year = 2023;
 
 //getRequirements.php
-$stmt = $conn->prepare("SELECT R.majorID, R.courseID, R.Category FROM HMS_Reqs R JOIN HMS_MajorPlan MP ON R.majorID = MP.majorID JOIN HMS_Plan P ON MP.planID = P.planID JOIN HMS_User U ON P.userID = U.userID WHERE U.userID = 1 AND MP.majorID = 0");
+$stmt = $conn->prepare("SELECT R.majorID, R.courseID, R.Category FROM HMS_Reqs R JOIN HMS_MajorPlan MP ON R.majorID = MP.majorID JOIN HMS_Plan P ON MP.planID = P.planID JOIN HMS_User U ON P.userID = U.userID WHERE U.userID = $currentUserID AND MP.majorID = $currentMajorID");
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -144,12 +173,35 @@ while($row = $result->fetch_assoc()) {
 
 $stmt->close();
 
+$stmt = $conn->prepare("SELECT planID, name FROM HMS_Plan WHERE userID = ?");
+$stmt->bind_param("i", $currentUserID);
+$stmt->execute();
+$result = $stmt->get_result();
+$planNames = [];
+$planIDs = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $planNames[] = $row['name']; 
+        $planIDs[] = $row['planID'];
+    }
+    //$row = $result->fetch_assoc();
+} else {
+    echo json_encode(["error" => "User has no plans"]);
+    exit;
+}
+$stmt->close();
+
 //echo data back to client
 
 echo json_encode([
+    "backfromthedb" => $currentPlanID,
+    "session" => $_SESSION["userID"],
     "requirements" => $requirements,
     "plan" => $planData,
-    "catalog" => $catalog
+    "catalog" => $catalog,
+    "planNames" => $planNames,
+    "planIDs" => $planIDs,
 ], JSON_PRETTY_PRINT);
 
 //close

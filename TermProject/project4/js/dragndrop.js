@@ -79,3 +79,17 @@ function onDrop(event) {
     let currHours = $("#" + event.currentTarget.id + " div p span").text();
     $("#" + event.currentTarget.id + " div p span").text(Number(currHours) + hours);
 }
+
+function deleteCourse(event) {
+    event.dataTransfer.dropEffect = "move";
+
+    let courseId = event.dataTransfer.getData("text");
+    $course = $("#" + courseId).detach();
+    let tag = getCourseId($course.html());
+    hours = getHours(tag);
+    totalHours -= hours;
+
+    $(".plan-info p").html(`<span class="tag">GPA</span> 3.7
+            <span class="tag">Major GPA</span> 3.2
+            <span class="tag">Total Hours</span> ${totalHours}`)
+}

@@ -1,3 +1,74 @@
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: var(--tertiary);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  right: 0; 
+  top: 100%;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.custom-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.submenu {
+  position: relative;
+}
+
+/* .submenu-content {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+} */
+
+.submenu-content {
+  display: none;
+  position: absolute;
+  right: 100%; /* Align to the left of the parent item */
+  top: 0;      /* Align the top of the submenu with the top of the parent item */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  transform: translateY(0); /* Ensure it's aligned at the top */
+}
+
+
+.submenu:hover .submenu-content {
+  display: block;
+}
+
+
 /* -------------------- Global -------------------- */
 
 /* Color palette from: https://colorhunt.co/palette/f9b57299b080748e63faf8ed */
@@ -133,6 +204,16 @@ p {
 
 .plan-info h2 {
   margin-left: 5px;
+  padding: 0.3rem;
+  border: 1px solid #f0f0f1;
+  border-radius: 0.3em;
+}
+
+.plan-info h2:hover {
+  padding: 0.3rem;
+  border: 1px solid var(--primary);
+  border-radius: 0.3em;
+  cursor: pointer;
 }
 
 .plan-info p {
@@ -174,10 +255,10 @@ p {
 }
 
 /* -------------------- Course Finder -------------------- */
-.course-finder h2, 
-.course-finder p, 
-.course-finder input {
-  display: inline;
+#courseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #searchBar {
@@ -190,6 +271,11 @@ p {
 
 #searchBar:focus {
   outline: 2px solid var(--primary)
+}
+
+#delete-button {
+  display: flex;
+  align-items: center;
 }
 
 .course-finder table {

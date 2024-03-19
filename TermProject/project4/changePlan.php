@@ -1,0 +1,173 @@
+<?php
+session_start();
+header('Content-Type: application/json');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $rawData = file_get_contents("php://input");
+    $data = json_decode($rawData, true);
+
+    if (isset($data["planID"])) {
+        $planID = $data["planID"];
+    } else {
+        echo json_encode(["error" => "planID not provided"]);
+        exit;
+    }
+
+    $server = "james.cedarville.edu";
+    $username = "cs3220_sp24";
+    $password = "OqagokbAg9DzKZGb";
+    $database = "cs3220_sp24";
+
+    $conn = new mysqli($server, $username, $password, $database);
+
+    if ($conn->connect_error) {
+        echo json_encode(["error" => "Connection failed: " . $conn->connect_error]);
+        exit;
+    }
+
+    $currentUserID = $_SESSION["userID"];
+
+    //$planID = (int) $data["planID"];
+
+    $stmt = $conn->prepare("SELECT majorID FROM HMS_MajorPlan WHERE planID = ?");
+    $stmt->bind_param("i", $_POST["planID"]);
+    //$stmt->bind_param("i", $planID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $currentMajorID = $row['majorID'];
+    } else {
+        $receivedPlanID = isset($_POST["planID"]) ? $_POST["planID"] : $planID;
+        echo json_encode(["error" => "User has no plans. Received result: " . $receivedPlanID]);
+        exit;
+    }
+    $stmt->close();
+    $year = 2023;
+
+    //getRequirements.php
+    $stmt = $conn->prepare("SELECT R.majorID, R.courseID, R.Category FROM HMS_Reqs R JOIN HMS_MajorPlan MP ON R.majorID = MP.majorID JOIN HMS_Plan P ON MP.planID = P.planID JOIN HMS_User U ON P.userID = U.userID WHERE U.userID = $currentUserID AND MP.majorID = $currentMajorID");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $requirements = [
+        "categories" => [
+            "Core" => ["courses" => []],
+            "Electives" => ["courses" => []],
+            "Cognates" => ["courses" => []],
+            "GenEds" => ["courses" => []]
+        ]
+    ];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            switch ($row["Category"]) {
+                case "Core":
+                    $requirements["categories"]["Core"]["courses"][] = $row["courseID"];
+                    break;
+                case "Electives":
+                    $requirements["categories"]["Electives"]["courses"][] = $row["courseID"];
+                    break;
+                case "Cognates":
+                    $requirements["categories"]["Cognates"]["courses"][] = $row["courseID"];
+                    break;
+                case "Gen Eds":
+                    $requirements["categories"]["GenEds"]["courses"][] = $row["courseID"];
+                    break;
+            }
+        }
+    } else {
+        $requirements = ["message" => "No results found"];
+    }
+
+    $stmt->close();
+
+    //plan.php
+
+    $userQuery = "SELECT full_name FROM HMS_User WHERE userID = $currentUserID";
+    $userResult = mysqli_query($conn, $userQuery);
+    $userRow = mysqli_fetch_assoc($userResult);
+    $studentName = $userRow['full_name'];
+
+
+    $planQuery = "SELECT p.name AS planName, mp.majorID AS majorID
+                FROM HMS_Plan AS p 
+                INNER JOIN HMS_MajorPlan AS mp ON p.planID = mp.planID 
+                WHERE p.planID = $currentPlanID";
+
+    $planResult = mysqli_query($conn, $planQuery);
+    $planRow = mysqli_fetch_assoc($planResult);
+    $planName = $planRow['planName'];
+    $majorID = $planRow['majorID'];
+
+
+    $majorQuery = "SELECT Major FROM HMS_Major WHERE majorID = $majorID";
+    $majorResult = mysqli_query($conn, $majorQuery);
+    $majorRow = mysqli_fetch_assoc($majorResult);
+    $majorName = $majorRow['Major'];
+
+
+    $currentYear = date("Y");
+    $currentMonth = date("n");
+    $currentTerm = '';
+
+    if ($currentMonth >= 1 && $currentMonth <= 5) {
+        $currentTerm = "Spring";
+    } elseif ($currentMonth == 6 || $currentMonth == 7) {
+        $currentTerm = "Summer";
+    } else {
+        $currentTerm = "Fall";
+    }
+
+
+    $coursesQuery = "SELECT CourseID, yearTaken, termTaken FROM HMS_PlanCourses WHERE planID = $currentPlanID";
+    $coursesResult = mysqli_query($conn, $coursesQuery);
+    $courses = array();
+    while ($courseRow = mysqli_fetch_assoc($coursesResult)) {
+        $courseID = $courseRow['CourseID'];
+        $yearTaken = $courseRow['yearTaken'];
+        $termTaken = $courseRow['termTaken'];
+
+        $courses[$courseID] = array(
+            'id' => $courseID,
+            'year' => $yearTaken,
+            'term' => $termTaken
+        );
+    }
+
+    $planData = array(
+        'student' => $studentName,
+        'name' => $planName,
+        'major' => $majorName,
+        'currYear' => $currentYear,
+        'currTerm' => $currentTerm,
+        'courses' => $courses
+    );
+
+    $stmt = $conn->prepare("SELECT planID, name FROM HMS_Plan WHERE userID = ?");
+    $stmt->bind_param("i", $currentUserID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $planNames = [];
+    $planIDs = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $planNames[] = $row['name'];
+            $planIDs[] = $row['planID'];
+        }
+    } else {
+        echo json_encode(["error" => "User has no UserID"]);
+        exit;
+    }
+    $stmt->close();
+
+    echo json_encode([
+        "requirements" => $requirements,
+        "plan" => $planData,
+        "planNames" => $planNames,
+        "planIDs" => $planIDs,
+    ], JSON_PRETTY_PRINT);
+}
