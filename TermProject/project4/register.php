@@ -58,15 +58,16 @@ if(isset($_POST['register'])) {
     $full_name = $_POST['full-name'];
     $major = $_POST['major'];
     $email = $_POST['email'];
-    $password = $_POST['password']; 
+    $password = $_POST['password'];
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
     
- 
-    $sql = "INSERT INTO HMS_User (full_name, email, password) VALUES ('$full_name', '$email', '$password')";
+    $stmt = $conn.prepare("INSERT INTO HMS_User (full_name, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $full_name, $email, $hashed_password);
     
-    if(mysqli_query($conn, $sql)) {
+    if($stmt->execute()) {
         echo "Registration successful!";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error registering user";
     }
     
 

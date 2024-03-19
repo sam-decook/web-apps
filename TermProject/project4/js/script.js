@@ -4,7 +4,7 @@ let requirements = {};
 let planNames = [];
 let planIDs = [];
 
-fetch("/~medeiro/TermProject/project4/server.php")
+fetch("server.php")
   .then(response => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -41,7 +41,7 @@ fetch("/~medeiro/TermProject/project4/server.php")
     //let formData = new FormData();
     //formData.append('planID', planID);
     
-    fetch(`/~medeiro/TermProject/project4/changePlan.php`, {
+    fetch("changePlan.php", {
       method: "POST",
       body: JSON.stringify({planID: planID}),
       headers: {
@@ -58,11 +58,6 @@ fetch("/~medeiro/TermProject/project4/server.php")
 
         console.log("HELLO WORLD HAHAHAHA");
         console.log(data);
-        // requirements = data.requirements;
-        // plan = data.planData;
-        // planNames = data.planNames;
-        // planIDs = data.planIDs;
-        // renderPlan();
       })
       .catch(error => console.error("Request failed: ", error));
   }
@@ -230,7 +225,7 @@ function searchCourses() {
 }
 
 function logout() {
-  fetch("/~medeiro/TermProject/project4/logout.php", {
+  fetch("logout.php", {
     method: "POST"
   })
     .then(response => {
