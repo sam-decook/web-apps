@@ -1,4 +1,4 @@
-`<!DOCTYPE html>
+http://judah.cedarville.edu/~deCook/TermProject/project2/ape.html<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,10 +12,10 @@
         <img src="./assets/logo.jpg" alt="Henrique Lima's Logo" class="hero--logo" />
         <div class="hero--nav--btns">
 	  <a href="/" class="nav-button active">Home</a>
-          <a href="http://judah.cedarville.edu/~deCook/TermProject/project1/ape.html" class="nav-button">Project 1</a>
-          <a href="http://judah.cedarville.edu/~deCook/TermProject/project2/ape.html" class="nav-button">Project 2</a>
-          <a href="http://judah.cedarville.edu/~deCook/TermProject/project3/ape.html" class="nav-button">Project 3</a>
-          <a href="http://judah.cedarville.edu/~medeiro/TermProject/project4/login.php" class="nav-button">Project 4</a>
+          <a href="http://judah.cedarville.edu/~medeiro/web-apps/Project1/ape.html" class="nav-button">Project1</a>
+          <a href="http://judah.cedarville.edu/~medeiro/web-apps/Project1/ape.html" class="nav-button">Project 2</a>
+          <a role="link" aria-disabled="true" class="nav-button">Project 3</a>
+          <a role="link" aria-disabled="true" class="nav-button">Project 4</a>
         </div>
       </nav>
       <div class="hero--text">

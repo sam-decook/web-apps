@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>APE Login Page</title>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/login.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="login-container">
-            <h2>Welcome to the Academic Planning Environment</h2>
-            <form id="login-form" action="login.php" method="POST">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <button class="btn" type="submit">Login</button>
-                </div>
-            </form>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APE Login Page</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Welcome to the Academic Planning Environment</h2>
+        <form id="login-form" action="login.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button class="btn" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="form-group">
+            <button class="btn" onclick="redirect()">Register</button>
         </div>
-    </body>
+    </div>
+    <script>
+        function redirect() {
+            window.location.href = "register.php";
+        }
+    </script>
+</body>
+
 </html>
 <?php
 session_start();
@@ -52,8 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
 
-        if (password_verify($_POST["password"], $row["password"])) {  
-                 
+        if (password_verify($_POST["password"], $row["password"])) {
+
             $_SESSION["email"] = $row["email"];
             $_SESSION["userID"] = $row["userID"];
             header("Location: ape.php");
