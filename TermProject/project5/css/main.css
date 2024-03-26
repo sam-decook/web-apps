@@ -1,0 +1,286 @@
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: var(--tertiary);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  right: 0; 
+  top: 100%;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.custom-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.submenu {
+  position: relative;
+}
+
+.submenu-content {
+  display: none;
+  position: absolute;
+  right: 100%; /* Align to the left of the parent item */
+  top: 0;      /* Align the top of the submenu with the top of the parent item */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  transform: translateY(0); /* Ensure it's aligned at the top */
+}
+
+.submenu:hover .submenu-content {
+  display: block;
+}
+
+
+/* -------------------- Global -------------------- */
+
+/* Color palette from: https://colorhunt.co/palette/f9b57299b080748e63faf8ed */
+:root {
+  --primary: #f9b572;
+  --secondary: #99b080;
+  --tertiary: #748e63;
+  --accent: #faf8ed;
+}
+
+* {
+  font-family: "Fira Sans", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* -------------------- Header -------------------- */
+header {
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  background-color: var(--primary);
+  padding: 20px;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 2.3rem;
+}
+
+#personal {
+  display: grid;
+  grid-template-columns: 40% auto;
+  align-content: center;
+}
+
+#personal p {
+  margin: 3px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* -------------------- Tags -------------------- */
+.tag {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background-color: var(--tertiary);
+  border-radius: 3px;
+  padding: 2px 3px 2px 3px;
+}
+
+.semester p {
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.semester > p {
+  cursor: pointer;
+}
+
+.semester > p:hover {
+  background-color: var(--primary);
+}
+
+/* -------------------- Buttons -------------------- */
+.btn {
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  background-color: var(--primary);
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: var(--accent);
+  background-color: var(--secondary);
+}
+
+/* -------------------- Main -------------------- */
+main {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 70% 30%;
+  margin: 4px;
+  height: 85vh;
+}
+
+main > div {
+  background-color: #f0f0f1;
+  margin: 4px;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  overflow: scroll;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+/* -------------------- Requirements -------------------- */
+#requirements h3 {
+  color: var(--accent);
+  background-color: var(--tertiary);
+  border-radius: 0.3em;
+  padding: 5px;
+  padding-left: 10px;
+  margin: 5px 0px;
+  cursor: pointer;
+}
+
+#requirements p {
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+/* -------------------- Plan -------------------- */
+#plan-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#plan-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#plan-header h2 {
+  margin-left: 5px;
+  padding: 0.3rem;
+  border: 1px solid #f0f0f1;
+  border-radius: 0.3em;
+}
+
+#plan-info p {
+  margin-right: 10px;
+}
+
+#plan-info span {
+  margin-left: 10px;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  color: black;
+}
+
+.semester {
+  border: var(--secondary) solid 1px;
+  border-radius: 0.3em;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.semester-info {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+.semester-info span {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+.semester h3 {
+  margin-left: 4px;
+}
+
+/* -------------------- Course Finder -------------------- */
+#course-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#searchBar {
+  margin-left: 10px;
+  width: 60%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#searchBar:focus {
+  outline: 2px solid var(--primary)
+}
+
+#delete-button {
+  display: flex;
+  align-items: center;
+}
+
+.course-finder table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px; 
+}
+
+th {
+  text-align: left;
+}
+
+tr {
+  cursor: pointer;
+}
+
+.course-finder th,
+.course-finder td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
