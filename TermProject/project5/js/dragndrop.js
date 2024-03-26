@@ -96,10 +96,14 @@ function deleteCourse(event) {
     event.dataTransfer.dropEffect = "move";
 
     let courseId = event.dataTransfer.getData("text");
-    $course = $("#" + courseId).detach();
-    let tag = getCourseId($course.html());
+    let tag = getCourseId($("#" + courseId).html());
     hours = getHours(tag);
     totalHours -= hours;
-
+    
+    let $prevSemester = $("#" + courseId).closest(".semester");
+    let prevSemHours = $prevSemester.find(".semester-info span").text();
+    $prevSemester.find(".semester-info span").text(Number(prevSemHours) - hours);
+    
+    $course = $("#" + courseId).detach();
     $("#total-hours").html(`<span class="tag">Total Hours</span> ${totalHours}`)
 }
