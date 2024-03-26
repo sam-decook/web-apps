@@ -584,7 +584,7 @@ function renderReqs() {
 /* Course Finder */
 function renderCourseFinder() {
   let courses = catalog.courses;
-  let tbody = $("#coursesBody");
+  let tbody = $("#courses-body");
 
   for (let courseId in courses) {
     let course = courses[courseId];
@@ -598,7 +598,7 @@ function renderCourseFinder() {
     tbody.append($newRow);
   }
 
-  let number = $("#coursesBody tr").length;
+  let number = $("#courses-body tr").length;
   updateNumberOfEntries(number);
 }
 

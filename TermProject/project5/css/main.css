@@ -75,7 +75,7 @@ header {
   background-color: var(--secondary);
 }
 
-main {
+#ape-grid {
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 70% 30%;
@@ -83,7 +83,7 @@ main {
   height: 85vh;
 }
 
-main > div {
+.block {
   background-color: #f0f0f1;
   margin: 4px;
   padding: 0.7rem;
@@ -190,22 +190,22 @@ p {
   align-items: center;
 }
 
-.course-finder table {
+#courses-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px; 
 }
 
-th {
+#courses-table th {
   text-align: left;
 }
 
-tr {
+#courses-table tr {
   cursor: pointer;
 }
 
-.course-finder th,
-.course-finder td {
+#courses-table th,
+#courses-table td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
 }
